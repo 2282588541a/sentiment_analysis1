@@ -65,3 +65,7 @@ his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内
 第一个：选择将历史中的后两个句子替换成和要预测句子情感标签相同的句子，接下来做了两个尝试，分别是，替换成句子+正确答案的模式，这种经过训练发现模型过拟合严重，产生的结果始终和bert的结果保持一致，第二个，送入句子+模型产生答案，这种训练后发现没什么效果。和glm2微调没什么区别！
 
 目前在尝试第二个想法，做完会继续上传
+
+参考：
+1.https://github.com/lyhue1991/torchkeras
+2.https://www.kaggle.com/code/debarshichanda/bert-multi-label-text-classification
