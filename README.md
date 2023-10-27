@@ -18,7 +18,7 @@ bert文件夹里，test1.ipynb是训练代码，pre_bert_chinese.csv是训练后
 
 结果如下：
 
-第一个acc为![](image\bert1.png)
+第一个acc为![]([image\bert1.png](https://github.com/2282588541a/sentiment_analysis1/blob/master/image/bert1.png?raw=true))
 
 后面的结果为：
 
