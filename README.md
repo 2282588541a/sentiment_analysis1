@@ -70,8 +70,58 @@ his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内
 ## llama2-7b：
 
 尝试对于llama27b模型进行微调，使用lora方法进行处理，但脱靶现象很严重，目前来看该项工作还是chatglm2最合适。
-=======
-参考：
+
+## 二分类任务辅助：
+
+经过对于chatglm的结果的评估，发现模型不同分类预测的结果存在差异，结果如下。
+
+
+
+于是尝试做
+
+```
+Love
+Accuracy Score = 0.771
+F1 Score (Micro) = 0.771
+F1 Score (Macro) = 0.7699045153978088
+Joy
+Accuracy Score = 0.736
+F1 Score (Micro) = 0.736
+F1 Score (Macro) = 0.6089468226929343
+Anxiety
+Accuracy Score = 0.762
+F1 Score (Micro) = 0.762
+F1 Score (Macro) = 0.6809583047357584
+Sorrow
+Accuracy Score = 0.8
+F1 Score (Micro) = 0.8000000000000002
+F1 Score (Macro) = 0.7401247401247402
+Expect
+Accuracy Score = 0.804
+F1 Score (Micro) = 0.804
+F1 Score (Macro) = 0.478584729981378
+Hate
+Accuracy Score = 0.848
+F1 Score (Micro) = 0.848
+F1 Score (Macro) = 0.6572593374281823
+Surprise
+Accuracy Score = 0.959
+F1 Score (Micro) = 0.959
+F1 Score (Macro) = 0.48953547728432867
+Anger
+Accuracy Score = 0.91
+F1 Score (Micro) = 0.91
+F1 Score (Macro) = 0.5517124584088782
+all
+Accuracy Score = 0.237
+F1 Score (Micro) = 0.5281124497991968
+F1 Score (Macro) = 0.3618506512922561
+```
+
+多个二分类任务作为辅助，目前还没运行结束，结束后会更新结果
+
+## 参考：
+
 1.https://github.com/lyhue1991/torchkeras
 2.https://www.kaggle.com/code/debarshichanda/bert-multi-label-text-classification
 
