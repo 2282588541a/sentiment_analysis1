@@ -74,4 +74,5 @@ his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内
 参考：
 1.https://github.com/lyhue1991/torchkeras
 2.https://www.kaggle.com/code/debarshichanda/bert-multi-label-text-classification
->>>>>>> 33ca6ac95a6b3724c45ab7689297c8e3c41f32f8
+
+3.https://github.com/FlagAlpha/Llama2-Chinese
