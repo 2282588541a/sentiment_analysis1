@@ -1,0 +1,7 @@
+infer_chatglm.py: 行 1: from: 未找到命令
+infer_chatglm.py: 行 2: from: 未找到命令
+infer_chatglm.py: 行 3: import: 未找到命令
+infer_chatglm.py: 行 4: import: 未找到命令
+infer_chatglm.py: 行 5: import: 未找到命令
+infer_chatglm.py: 行 8: 未预期的记号 "(" 附近有语法错误
+infer_chatglm.py: 行 8: `model = AutoModel.from_pretrained("/datas/huggingface/chatglm-6b",'

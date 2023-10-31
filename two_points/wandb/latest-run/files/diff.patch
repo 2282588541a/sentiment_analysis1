@@ -1,0 +1,322 @@
+diff --git a/chatglm.py b/chatglm.py
+index 29e5b5c..ea4d105 100644
+--- a/chatglm.py
++++ b/chatglm.py
+@@ -1,49 +1,18 @@
+-# %% [markdown]
+-# # ChatGLM2-6b微调保姆级教程
+-
+-# %% [markdown]
+-# 😋😋公众号算法美食屋后台回复关键词：**torchkeras**，获取本文notebook源代码和数据集下载链接。
+-
+-# %% [markdown]
+-# 干货预警：这可能是你能够找到的最容易懂的，最完整的，适用于各种NLP任务的开源LLM的finetune教程~
+-
+-# %%
+-
+-
+-# %% [markdown]
+-# ChatGLM2-6b是清华开源的小尺寸LLM，只需要一块普通的显卡(32G较稳妥)即可推理和微调，是目前社区非常活跃的一个开源LLM。
+-# 
+-# 本范例使用非常简单的，外卖评论数据集来实施微调，让ChatGLM2-6b来对一段外卖评论区分是好评还是差评。
+-# 
+-# 可以发现，经过微调后的模型，相比直接 3-shot-prompt 可以取得明显更好的效果。
+-# 
+-# 值得注意的是，尽管我们以文本分类任务为例，实际上，任何NLP任务，例如，命名实体识别，翻译，聊天对话等等，都可以通过加上合适的上下文，转换成一个对话问题，并针对我们的使用场景，设计出合适的数据集来微调ChatGLM2.
+-# 
+-# 
+ 
+-# %% [markdown]
+-# 公众号算法美食屋后台回复关键词： torchkeras，获取本文notebook源代码，以及waimai数据集下载链接~
+-# 
+-
+-# %%
+-
+-
+-# %% [markdown]
+-# ## 〇，预训练模型
+-
+-# %% [markdown]
+-# 我们需要从 https://huggingface.co/THUDM/chatglm2-6b 下载chatglm2的模型。
+-# 
+-# 国内可能速度会比较慢，总共有14多个G，网速不太好的话，大概可能需要一两个小时。
+-# 
+-# 如果网络不稳定，也可以手动从这个页面一个一个下载全部文件然后放置到 一个文件夹中例如 'chatglm2-6b' 以便读取。
+-# 
+-# 
+ 
+ # %%
+ import copy
+ from transformers import  AutoModel,AutoTokenizer
+ import os
++import wandb
++wandb.login()
++#以下是wandb相关参数认证
++from argparse import Namespace
++config1 = Namespace(
++    batch_size = 4,
++    lr = 1e-3,
++    dropout_p = 0.1,
++    )
+ #os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+ model_name = "/datas/huggingface/chatglm2-6b" #或者远程 “THUDM/chatglm2-6b”
+ tokenizer = AutoTokenizer.from_pretrained(
+@@ -93,8 +62,8 @@ print(response)
+ his.append(("５０ 年 遇 大雪 阻断 无数 游子 回家 归途 也 影响 正常 上下班 -> ","Anxiety"))
+ his.append(("凑巧 那天 下午 没有 开车 而 天空 飘 起 鹅毛大雪 如果 走 着 回家 说不定 就 会 变成 雪人 就 百感交集 时候 辆 熟悉 车子 停 我的 面前 不 等 车 小柯 送 你 一程 吧 -> ","Surprise,Anxiety,Joy"))
+ 
+-# his.append(("瞪 大 眼睛 一看 咦 这 不 可可 嘛 什么 时候 买 新车 -> ","Surprise"))
+-# his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内 暖和 空调 让 人 倍 感 温馨 顿时 忘却 车外 寒冷 -> ","Joy,Expect,Love"))
++his.append(("瞪 大 眼睛 一看 咦 这 不 可可 嘛 什么 时候 买 新车 -> ","Surprise"))
++his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内 暖和 空调 让 人 倍 感 温馨 顿时 忘却 车外 寒冷 -> ","Joy,Expect,Love"))
+ 
+ 
+ # %% [markdown]
+@@ -177,38 +146,40 @@ def before():
+     # train.to_csv("train.csv", index=False)
+     #data_train.to_csv("train.csv",index=False)
+ #before()    
+-print(genres)  
+-
+-# %%
+-#将上下文整理成与推理时候一致，参照model.chat中的源码~
+-#model.build_inputs??
+-data_train = pd.read_csv('train_sort.csv')
+-data_tmp=pd.DataFrame(data_train,columns=['ID', 'Text', 'Labels'])
+-
+-def build_inputs(query, history,pred):
++#print(genres)  
++
++# %%
++# #将上下文整理成与推理时候一致，参照model.chat中的源码~
++# #model.build_inputs??
++# data_train = pd.read_csv('train_sort.csv')
++# data_tmp=pd.DataFrame(data_train,columns=['ID', 'Text', 'Labels'])
++
++# def build_inputs(query, history,pred):
++#     prompt = ""
++#     num=0
++#     ans=''
++#     # pred=''
++#     # for index,row in data_tmp.iterrows(): 
++#     #     str11=str(getattr(row, 'Text'))
++#     #     if(str11==query):
++#     #         pred=str(getattr(row, 'Labels'))
++#     #         break
++#     for index,row in data_tmp.iterrows():      
++#         str11=str(getattr(row, 'Labels'))
++#         if(str11==pred):
++#             num=num+1
++#             ans=str(getattr(row, 'Text'))
++#             break
++#     his1=copy.deepcopy(history)
++#     response, history1 = model.chat(tokenizer, ans, history=his1)
++#     for i, (old_query, response) in enumerate(history1):
++#         prompt += "[Round {}]\n\n问：{}\n\n答：{}\n\n".format(i + 1, old_query, response)
++#     prompt += "[Round {}]\n\n问：{} -> \n\n答：".format(len(history1) + 1, query)
++#     return prompt 
++
++def build_inputs(query, history):
+     prompt = ""
+-    num=0
+-    ans=[]
+-    # pred=''
+-    # for index,row in data_tmp.iterrows(): 
+-    #     str11=str(getattr(row, 'Text'))
+-    #     if(str11==query):
+-    #         pred=str(getattr(row, 'Labels'))
+-    #         break
+-    for index,row in data_tmp.iterrows():      
+-        str11=str(getattr(row, 'Labels'))
+-        if(str11==pred):
+-            num=num+1
+-            ans.append(str(getattr(row, 'Text')))
+-            if(num==2):
+-                break
+-    his1=copy.deepcopy(history)
+-    i=0
+-    while i<num:
+-        his1.append((ans[i],pred))
+-        i=i+1    
+-
+-    for i, (old_query, response) in enumerate(his1):
++    for i, (old_query, response) in enumerate(history):
+         prompt += "[Round {}]\n\n问：{}\n\n答：{}\n\n".format(i + 1, old_query, response)
+     prompt += "[Round {}]\n\n问：{} -> \n\n答：".format(len(history) + 1, query)
+     return prompt 
+@@ -218,7 +189,7 @@ def build_inputs(query, history,pred):
+ 
+ 
+ # %%
+-df=pd.read_csv("train.csv")
++df=pd.read_csv("train_sort.csv")
+ ds_dic = datasets.Dataset.from_pandas(df).train_test_split(
+     test_size = 2000,shuffle=True, seed = 43)
+ dftrain = ds_dic['train'].to_pandas()
+@@ -231,17 +202,18 @@ dftest = ds_dic['test'].to_pandas()
+ 
+ # for i, row in dftrain.iterrows():
+ #     dftrain['context'][i]=(build_inputs(row['Text'], his,row['Labels']))
+-dftrain['context'] = [build_inputs(x, history=his, pred=pred) for x, pred in zip(dftrain['Text'], dftrain['Labels'])]
++dftrain['context'] = [build_inputs(x,history=his) for x in dftrain['Text']]
++#dftrain['context'] = [build_inputs(x, history=his, pred=pred) for x, pred in zip(dftrain['Text'], dftrain['Labels'])]
+ dftrain['target'] = [x for x in dftrain['Labels']]
+ dftrain = dftrain[['context','target']]
+-dftest['context'] = [build_inputs(x, history=his, pred=pred) for x, pred in zip(dftest['Text'], dftest['Labels'])]
+-# dftest['context'] = [build_inputs(x,history=his) for x in dftest['Text']]
++# dftest['context'] = [build_inputs(x, history=his, pred=pred) for x, pred in zip(dftest['Text'], dftest['Labels'])]
++dftest['context'] = [build_inputs(x,history=his) for x in dftest['Text']]
+ dftest['target'] = [x for x in dftest['Labels']]
+ dftest = dftest[['context','target']]
+ 
+ 
+ 
+-print(dftest) 
++print(dftest['context']) 
+ 
+ # %%
+ print(dftest['context'][1]) 
+@@ -251,33 +223,7 @@ ds_train = datasets.Dataset.from_pandas(dftrain)
+ ds_val = datasets.Dataset.from_pandas(dftest)
+ 
+ 
+-# %%
+-
+-
+-# %% [markdown]
+-# ### 2，token编码
+ 
+-# %% [markdown]
+-# 为了将文本数据喂入模型，需要将词转换为token。
+-# 
+-# 也就是把context转化成context_ids，把target转化成target_ids. 
+-# 
+-# 同时，我们还需要将context_ids和target_ids拼接到一起作为模型的input_ids。
+-# 
+-# 这是为什么呢？
+-# 
+-# 因为ChatGLM2基座模型是一个TransformerDecoder结构，是一个被预选练过的纯粹的语言模型(LLM，Large Lauguage Model)。
+-# 
+-# 一个纯粹的语言模型，本质上只能做一件事情，那就是计算任意一段话像'人话'的概率。
+-# 
+-# 我们将context和target拼接到一起作为input_ids， ChatGLM2 就可以判断这段对话像'人类对话'的概率。
+-# 
+-# 在训练的时候我们使用梯度下降的方法来让ChatGLM2的判断更加准确。
+-# 
+-# 训练完成之后，在预测的时候，我们就可以利用贪心搜索或者束搜索的方法按照最像"人类对话"的方式进行更合理的文本生成。
+-# 
+-
+-# %%
+ from tqdm import tqdm
+ import transformers
+ 
+@@ -520,12 +466,19 @@ ckpt_path = 'github_chatglm4_lora_chinese'
+ 
+ 
+ # %%
++from torchkeras.kerascallbacks import WandbCallback
++wandb_cb = WandbCallback(project='glm_shot',
++                         config=config1,
++                         name=None,
++                         save_code=True,
++                         save_ckpt=True)
+ keras_model.fit(train_data = dl_train,
+                 val_data = dl_val,
+                 epochs=50,patience=3,
+                 monitor='val_loss',mode='min',
+                 ckpt_path = ckpt_path,
+-                mixed_precision='fp16'
++                mixed_precision='fp16',
++                  callbacks = [wandb_cb]
+                )
+ 
+ 
+diff --git a/github_chatglm4_lora_chinese/README.md b/github_chatglm4_lora_chinese/README.md
+index 8b5e193..c0f3c5c 100644
+--- a/github_chatglm4_lora_chinese/README.md
++++ b/github_chatglm4_lora_chinese/README.md
+@@ -126,5 +126,27 @@ library_name: peft
+ - PEFT 0.5.0
+ - PEFT 0.5.0
+ - PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
++- PEFT 0.5.0
+ 
+ - PEFT 0.5.0
+diff --git a/github_chatglm4_lora_chinese/adapter_model.bin b/github_chatglm4_lora_chinese/adapter_model.bin
+index 63b8e08..7a81d0d 100644
+Binary files a/github_chatglm4_lora_chinese/adapter_model.bin and b/github_chatglm4_lora_chinese/adapter_model.bin differ
+diff --git a/infer_chatglm.py b/infer_chatglm.py
+index 25967b9..db79c36 100644
+--- a/infer_chatglm.py
++++ b/infer_chatglm.py
+@@ -95,26 +95,33 @@ response, his = model.chat(tokenizer, get_prompt('性能比 获得 多种 测试
+ his.append(("５０ 年 遇 大雪 阻断 无数 游子 回家 归途 也 影响 正常 上下班 -> ","Anxiety"))
+ his.append(("凑巧 那天 下午 没有 开车 而 天空 飘 起 鹅毛大雪 如果 走 着 回家 说不定 就 会 变成 雪人 就 百感交集 时候 辆 熟悉 车子 停 我的 面前 不 等 车 小柯 送 你 一程 吧 -> ","Surprise,Anxiety,Joy"))
+ 
+-# his.append(("瞪 大 眼睛 一看 咦 这 不 可可 嘛 什么 时候 买 新车 -> ","Surprise"))
+-# his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内 暖和 空调 让 人 倍 感 温馨 顿时 忘却 车外 寒冷 -> ","Joy,Expect,Love")) 
++his.append(("瞪 大 眼睛 一看 咦 这 不 可可 嘛 什么 时候 买 新车 -> ","Surprise"))
++his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内 暖和 空调 让 人 倍 感 温馨 顿时 忘却 车外 寒冷 -> ","Joy,Expect,Love")) 
+ 
+     
+-
++#将上下文整理成与推理时候一致，参照model.chat中的源码~
++#model.build_inputs??
++# def predict(text,pred):
++#     num=0
++#     ans=''    
++#     for index,row in data_tmp.iterrows():      
++#         str11=str(getattr(row, 'Labels'))
++#         if(str11==pred):
++#             num=num+1
++#             ans=str(getattr(row, 'Text'))
++#             break
++#     his1=copy.deepcopy(his)
++#     # response, history1 = model.chat(tokenizer, ans, history=his1)    
++#     response, history = model.chat(tokenizer, f"{text} -> ", history=his1,
++#     temperature=0.01)
++#     return response 
+ def predict(text,pred):
+-    num=0
+-    ans=[]
+-    for index,row in data_tmp.iterrows():      
+-        str11=str(getattr(row, 'Labels'))
+-        if(str11==pred):
+-            num=num+1
+-            ans.append(str(getattr(row, 'Text')))
+-            if(num==2):
+-                break
++
+     his1=copy.deepcopy(his)
+-    i=0
+-    while i<num:
+-        his1.append((ans[i],pred))
+-        i=i+1
++    # i=0
++    # while i<num:
++    #     his1.append((ans[i],pred))
++    #     i=i+1
+     response, history = model.chat(tokenizer, f"{text} -> ", history=his1,
+     temperature=0.01)
+     return response 
