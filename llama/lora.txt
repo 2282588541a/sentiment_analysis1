@@ -1,0 +1,1024 @@
+[2023-10-29 17:57:35,907] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 17:57:37,228] [WARNING] [runner.py:203:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2023-10-29 17:57:37,228] [INFO] [runner.py:570:main] cmd = /data/zhangxiaoming/miniconda3/envs/env/bin/python3.9 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMiwgM119 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None finetune_clm_lora.py --model_name_or_path /datas/huggingface/Llama-2-7b-hf --train_files /data/zhangxiaoming/personal/sentiment_analysis/train1.csv --validation_files /data/zhangxiaoming/personal/sentiment_analysis/dev1.csv --per_device_train_batch_size 32 --per_device_eval_batch_size 32 --do_train --do_eval --use_fast_tokenizer false --output_dir llama --evaluation_strategy steps --max_eval_samples 800 --learning_rate 1e-4 --gradient_accumulation_steps 8 --num_train_epochs 10 --warmup_steps 400 --load_in_bits 4 --lora_r 8 --lora_alpha 32 --target_modules q_proj,k_proj,v_proj,o_proj,down_proj,gate_proj,up_proj --save_strategy steps --preprocessing_num_workers 10 --save_steps 200 --eval_steps 20 --save_total_limit 10 --seed 42 --disable_tqdm false --ddp_find_unused_parameters false --block_size 2048 --report_to tensorboard --overwrite_output_dir --deepspeed ds_config_zero2.json --ignore_data_skip true --bf16 --gradient_checkpointing --bf16_full_eval --ddp_timeout 18000000
+[2023-10-29 17:57:38,749] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 17:57:40,054] [INFO] [launch.py:145:main] WORLD INFO DICT: {'localhost': [2, 3]}
+[2023-10-29 17:57:40,054] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=2, node_rank=0
+[2023-10-29 17:57:40,054] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1]})
+[2023-10-29 17:57:40,054] [INFO] [launch.py:163:main] dist_world_size=2
+[2023-10-29 17:57:40,054] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=2,3
+[2023-10-29 17:57:41,593] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 17:57:41,602] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 17:57:43,401] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-10-29 17:57:43,401] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-10-29 17:57:43,401] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+10/29/2023 17:59:55 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: False
+10/29/2023 17:59:55 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+10/29/2023 17:59:55 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=True,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=False,
+ddp_timeout=18000000,
+debug=[],
+deepspeed=ds_config_zero2.json,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=20,
+evaluation_strategy=steps,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=8,
+gradient_checkpointing=True,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=True,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0001,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=llama/runs/Oct29_17-57-43_amax-R5300-G5,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=10.0,
+optim=adamw_torch,
+optim_args=None,
+output_dir=llama,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=32,
+per_device_train_batch_size=32,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['tensorboard'],
+resume_from_checkpoint=None,
+run_name=llama,
+save_on_each_node=False,
+save_safetensors=False,
+save_steps=200,
+save_strategy=steps,
+save_total_limit=10,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=400,
+weight_decay=0.0,
+)
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/load.py:2089: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=None' instead.
+  warnings.warn(
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/load.py:2089: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=None' instead.
+  warnings.warn(
+Using custom data configuration default-44b7c1e1406106aa
+10/29/2023 17:59:56 - INFO - datasets.builder - Using custom data configuration default-44b7c1e1406106aa
+Loading Dataset Infos from /data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/packaged_modules/csv
+10/29/2023 17:59:56 - INFO - datasets.info - Loading Dataset Infos from /data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/packaged_modules/csv
+Overwrite dataset info from restored data version if exists.
+10/29/2023 17:59:56 - INFO - datasets.builder - Overwrite dataset info from restored data version if exists.
+Loading Dataset info from llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d
+10/29/2023 17:59:56 - INFO - datasets.info - Loading Dataset info from llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d
+Found cached dataset csv (/data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d)
+10/29/2023 17:59:56 - INFO - datasets.builder - Found cached dataset csv (/data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d)
+Loading Dataset info from /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d
+10/29/2023 17:59:56 - INFO - datasets.info - Loading Dataset info from /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d
+[INFO|configuration_utils.py:713] 2023-10-29 17:59:56,463 >> loading configuration file /datas/huggingface/Llama-2-7b-hf/config.json
+[INFO|configuration_utils.py:775] 2023-10-29 17:59:56,464 >> Model config LlamaConfig {
+  "_name_or_path": "/datas/huggingface/Llama-2-7b-hf",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 11008,
+  "max_position_embeddings": 4096,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 32,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 10000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float16",
+  "transformers_version": "4.33.2",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 17:59:56,530 >> loading file tokenizer.model
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 17:59:56,530 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 17:59:56,530 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 17:59:56,530 >> loading file tokenizer_config.json
+LoraConfig(peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, base_model_name_or_path=None, revision=None, task_type='CAUSAL_LM', inference_mode=False, r=8, target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj', 'down_proj', 'gate_proj', 'up_proj'], lora_alpha=32, lora_dropout=0.05, fan_in_fan_out=False, bias='none', modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None)
+None
+[INFO|modeling_utils.py:2866] 2023-10-29 17:59:56,553 >> loading weights file /datas/huggingface/Llama-2-7b-hf/model.safetensors.index.json
+[INFO|modeling_utils.py:1200] 2023-10-29 17:59:56,553 >> Instantiating LlamaForCausalLM model under default dtype torch.float16.
+[INFO|configuration_utils.py:768] 2023-10-29 17:59:56,554 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "transformers_version": "4.33.2"
+}
+
+[INFO|modeling_utils.py:2983] 2023-10-29 17:59:56,615 >> Detected 4-bit loading: activating 4-bit loading for this model
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]LoraConfig(peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, base_model_name_or_path=None, revision=None, task_type='CAUSAL_LM', inference_mode=False, r=8, target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj', 'down_proj', 'gate_proj', 'up_proj'], lora_alpha=32, lora_dropout=0.05, fan_in_fan_out=False, bias='none', modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None)
+None
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.96s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.68s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.87s/it]
+[INFO|modeling_utils.py:3655] 2023-10-29 18:00:00,478 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
+
+[INFO|modeling_utils.py:3663] 2023-10-29 18:00:00,479 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at /datas/huggingface/Llama-2-7b-hf.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
+[INFO|configuration_utils.py:728] 2023-10-29 18:00:00,481 >> loading configuration file /datas/huggingface/Llama-2-7b-hf/generation_config.json
+[INFO|configuration_utils.py:768] 2023-10-29 18:00:00,481 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "do_sample": true,
+  "eos_token_id": 2,
+  "max_length": 4096,
+  "pad_token_id": 0,
+  "temperature": 0.6,
+  "top_p": 0.9,
+  "transformers_version": "4.33.2"
+}
+
+train_on_inputs True
+Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00000_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00000_of_00010.arrow
+Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00001_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00001_of_00010.arrow
+Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00002_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00002_of_00010.arrow
+Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00003_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00003_of_00010.arrow
+Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00004_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00004_of_00010.arrow
+Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00005_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00005_of_00010.arrow
+Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00006_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00006_of_00010.arrow
+Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00007_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00007_of_00010.arrow
+Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00008_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00008_of_00010.arrow
+Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00009_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_00009_of_00010.arrow
+Loading cached processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_*_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-9ec67141e7d798fc_*_of_00010.arrow
+Concatenating 10 shards
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Concatenating 10 shards
+Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00000_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00000_of_00010.arrow
+Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00001_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00001_of_00010.arrow
+Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00002_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00002_of_00010.arrow
+Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00003_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00003_of_00010.arrow
+Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00004_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00004_of_00010.arrow
+Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00005_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00005_of_00010.arrow
+Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00006_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00006_of_00010.arrow
+Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00007_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00007_of_00010.arrow
+Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00008_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00008_of_00010.arrow
+Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00009_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_00009_of_00010.arrow
+Loading cached processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_*_of_00010.arrow
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-0f180bfe06ce5f90_*_of_00010.arrow
+Concatenating 10 shards
+10/29/2023 18:00:00 - INFO - datasets.arrow_dataset - Concatenating 10 shards
+Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.90s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.66s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.85s/it]
+train_on_inputs True
+10/29/2023 18:00:01 - INFO - __main__ - Sample 20952 of the training set: {'input_ids': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 31640, 29871, 236, 157, 193, 232, 136, 144, 30437, 29871, 31522, 30780, 29871, 30847, 30801, 29871, 30413, 29871, 30815, 29871, 232, 167, 189, 29871, 30659, 29871, 31506, 234, 139, 188, 29871, 31506, 232, 169, 139, 29871, 31751, 29871, 30847, 31502, 29871, 31656, 30910, 29871, 31410, 30767, 29871, 30847, 31502, 29871, 31331, 29871, 234, 139, 185, 31506, 30574, 231, 189, 181, 29871, 31398, 232, 193, 136, 16088, 30098, 29871, 235, 184, 184, 29871, 236, 165, 153, 233, 136, 170, 29871, 30651, 30658, 29871, 232, 180, 141, 29871, 30769, 29871, 231, 187, 165, 29871, 30659, 234, 140, 143, 29871, 234, 139, 185, 31763, 29871, 30953, 29871, 31407, 29871, 232, 173, 149, 30988, 29871, 233, 147, 161, 29871, 233, 131, 152, 29871, 30744, 30651, 29871, 30810, 30742, 29871, 232, 160, 157, 232, 137, 182, 29871, 233, 142, 149, 234, 190, 160, 29871, 31410, 30767, 29871, 30805, 29871, 30613, 30755, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 379, 403, 29892, 2744, 29916, 21549, 29892, 9928, 261, 13, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 31640, 29871, 236, 157, 193, 232, 136, 144, 30437, 29871, 31522, 30780, 29871, 30847, 30801, 29871, 30413, 29871, 30815, 29871, 232, 167, 189, 29871, 30659, 29871, 31506, 234, 139, 188, 29871, 31506, 232, 169, 139, 29871, 31751, 29871, 30847, 31502, 29871, 31656, 30910, 29871, 31410, 30767, 29871, 30847, 31502, 29871, 31331, 29871, 234, 139, 185, 31506, 30574, 231, 189, 181, 29871, 31398, 232, 193, 136, 16088, 30098, 29871, 235, 184, 184, 29871, 236, 165, 153, 233, 136, 170, 29871, 30651, 30658, 29871, 232, 180, 141, 29871, 30769, 29871, 231, 187, 165, 29871, 30659, 234, 140, 143, 29871, 234, 139, 185, 31763, 29871, 30953, 29871, 31407, 29871, 232, 173, 149, 30988, 29871, 233, 147, 161, 29871, 233, 131, 152, 29871, 30744, 30651, 29871, 30810, 30742, 29871, 232, 160, 157, 232, 137, 182, 29871, 233, 142, 149, 234, 190, 160, 29871, 31410, 30767, 29871, 30805, 29871, 30613, 30755, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 379, 403, 29892, 2744, 29916, 21549, 29892, 9928, 261, 13, 2]}.
+10/29/2023 18:00:01 - INFO - __main__ - Sample 3648 of the training set: {'input_ids': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30413, 31138, 29871, 31984, 31985, 29871, 30457, 29871, 30470, 29871, 31221, 29871, 31594, 30805, 29871, 31423, 29871, 31658, 29871, 31138, 29871, 30470, 236, 193, 135, 29871, 235, 132, 143, 31729, 29871, 232, 172, 157, 31191, 29871, 31184, 29871, 30810, 31819, 29871, 30287, 235, 139, 175, 29871, 30952, 235, 183, 171, 29871, 31658, 31596, 29871, 31608, 29871, 30953, 29871, 31423, 29871, 30698, 31376, 29871, 31138, 29871, 31568, 236, 165, 148, 29871, 234, 136, 170, 31122, 29871, 235, 170, 132, 30806, 29871, 31184, 29871, 30810, 31893, 29871, 30594, 30557, 29871, 31151, 30448, 29871, 31222, 234, 190, 159, 29871, 232, 144, 138, 234, 189, 170, 30845, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 6298, 7734, 13, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30413, 31138, 29871, 31984, 31985, 29871, 30457, 29871, 30470, 29871, 31221, 29871, 31594, 30805, 29871, 31423, 29871, 31658, 29871, 31138, 29871, 30470, 236, 193, 135, 29871, 235, 132, 143, 31729, 29871, 232, 172, 157, 31191, 29871, 31184, 29871, 30810, 31819, 29871, 30287, 235, 139, 175, 29871, 30952, 235, 183, 171, 29871, 31658, 31596, 29871, 31608, 29871, 30953, 29871, 31423, 29871, 30698, 31376, 29871, 31138, 29871, 31568, 236, 165, 148, 29871, 234, 136, 170, 31122, 29871, 235, 170, 132, 30806, 29871, 31184, 29871, 30810, 31893, 29871, 30594, 30557, 29871, 31151, 30448, 29871, 31222, 234, 190, 159, 29871, 232, 144, 138, 234, 189, 170, 30845, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 6298, 7734, 13, 2]}.
+10/29/2023 18:00:01 - INFO - __main__ - Sample 819 of the training set: {'input_ids': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30672, 31522, 29871, 31066, 232, 172, 137, 29871, 30948, 30594, 29871, 31811, 29871, 234, 136, 170, 31122, 29871, 31356, 31893, 29871, 233, 135, 162, 235, 170, 140, 29871, 31370, 31751, 29871, 232, 187, 169, 29871, 234, 160, 131, 29871, 233, 186, 164, 233, 186, 164, 30210, 29871, 233, 134, 137, 233, 131, 136, 29871, 30503, 29871, 231, 191, 167, 233, 135, 162, 29871, 31238, 29871, 31551, 30672, 29871, 31424, 30505, 29871, 233, 165, 169, 29871, 31066, 232, 172, 137, 29871, 233, 135, 162, 235, 170, 140, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 17784, 798, 29892, 2744, 29916, 21549, 13, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30672, 31522, 29871, 31066, 232, 172, 137, 29871, 30948, 30594, 29871, 31811, 29871, 234, 136, 170, 31122, 29871, 31356, 31893, 29871, 233, 135, 162, 235, 170, 140, 29871, 31370, 31751, 29871, 232, 187, 169, 29871, 234, 160, 131, 29871, 233, 186, 164, 233, 186, 164, 30210, 29871, 233, 134, 137, 233, 131, 136, 29871, 30503, 29871, 231, 191, 167, 233, 135, 162, 29871, 31238, 29871, 31551, 30672, 29871, 31424, 30505, 29871, 233, 165, 169, 29871, 31066, 232, 172, 137, 29871, 233, 135, 162, 235, 170, 140, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 17784, 798, 29892, 2744, 29916, 21549, 13, 2]}.
+Loading cached shuffled indices for dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-e2f432374e474878.arrow
+10/29/2023 18:00:01 - INFO - datasets.arrow_dataset - Loading cached shuffled indices for dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-e2f432374e474878.arrow
+trainable params: 19,988,480 || all params: 6,758,404,096 || trainable%: 0.2957573965106688
+[INFO|trainer.py:403] 2023-10-29 18:00:41,588 >> The model is quantized. To train this model you need to add additional modules inside the model such as adapters using `peft` library and freeze the model weights. Please check the examples in https://github.com/huggingface/peft for more details.
+trainable params: 19,988,480 || all params: 6,758,404,096 || trainable%: 0.2957573965106688
+[2023-10-29 18:00:41,737] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
+[2023-10-29 18:00:41,960] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[93m [WARNING] [0m cpu_adam cuda is missing or is incompatible with installed torch, only cpu ops can be compiled!
+Using /data/zhangxiaoming/.cache/torch_extensions/py39_cu117 as PyTorch extensions root...
+[93m [WARNING] [0m cpu_adam cuda is missing or is incompatible with installed torch, only cpu ops can be compiled!
+Using /data/zhangxiaoming/.cache/torch_extensions/py39_cu117 as PyTorch extensions root...
+Emitting ninja build file /data/zhangxiaoming/.cache/torch_extensions/py39_cu117/cpu_adam/build.ninja...
+Building extension module cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.0361180305480957 seconds
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000100, betas=(0.900000, 0.999000), weight_decay=0.000000, adam_w=1
+[2023-10-29 18:00:46,800] [INFO] [logging.py:96:log_dist] [Rank 0] Using DeepSpeed Optimizer param name adamw as basic optimizer
+[2023-10-29 18:00:46,858] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2023-10-29 18:00:46,858] [INFO] [utils.py:54:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2023-10-29 18:00:46,858] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.bfloat16 ZeRO stage 2 optimizer
+[2023-10-29 18:00:46,858] [INFO] [stage_1_and_2.py:146:__init__] Reduce bucket size 500000000
+[2023-10-29 18:00:46,858] [INFO] [stage_1_and_2.py:147:__init__] Allgather bucket size 500000000
+[2023-10-29 18:00:46,858] [INFO] [stage_1_and_2.py:148:__init__] CPU Offload: True
+[2023-10-29 18:00:46,858] [INFO] [stage_1_and_2.py:149:__init__] Round robin gradient partitioning: False
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.034804105758667 seconds
+Rank: 0 partition count [2] and sizes[(9994240, False)] 
+Rank: 1 partition count [2] and sizes[(9994240, False)] 
+[2023-10-29 18:00:47,156] [INFO] [utils.py:803:see_memory_usage] Before initializing optimizer states
+[2023-10-29 18:00:47,157] [INFO] [utils.py:804:see_memory_usage] MA 3.72 GB         Max_MA 3.72 GB         CA 4.15 GB         Max_CA 4 GB 
+[2023-10-29 18:00:47,157] [INFO] [utils.py:811:see_memory_usage] CPU Virtual Memory:  used = 50.14 GB, percent = 6.6%
+[2023-10-29 18:00:47,283] [INFO] [utils.py:803:see_memory_usage] After initializing optimizer states
+[2023-10-29 18:00:47,284] [INFO] [utils.py:804:see_memory_usage] MA 3.72 GB         Max_MA 3.72 GB         CA 4.15 GB         Max_CA 4 GB 
+[2023-10-29 18:00:47,284] [INFO] [utils.py:811:see_memory_usage] CPU Virtual Memory:  used = 50.26 GB, percent = 6.7%
+[2023-10-29 18:00:47,284] [INFO] [stage_1_and_2.py:520:__init__] optimizer state initialized
+[2023-10-29 18:00:47,360] [INFO] [utils.py:803:see_memory_usage] After initializing ZeRO optimizer
+[2023-10-29 18:00:47,360] [INFO] [utils.py:804:see_memory_usage] MA 3.72 GB         Max_MA 3.72 GB         CA 4.15 GB         Max_CA 4 GB 
+[2023-10-29 18:00:47,361] [INFO] [utils.py:811:see_memory_usage] CPU Virtual Memory:  used = 50.26 GB, percent = 6.7%
+[2023-10-29 18:00:47,367] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = adamw
+[2023-10-29 18:00:47,367] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupDecayLR
+[2023-10-29 18:00:47,367] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupDecayLR object at 0x7f51bc33fbe0>
+[2023-10-29 18:00:47,367] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0001], mom=[[0.9, 0.999]]
+[2023-10-29 18:00:47,370] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   amp_enabled .................. False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   amp_params ................... False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   bfloat16_enabled ............. True
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f51bc503a60>
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   communication_data_type ...... None
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   disable_allgather ............ False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   dump_state ................... False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... None
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
+[2023-10-29 18:00:47,371] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   elasticity_enabled ........... False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   fp16_auto_cast ............... None
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   fp16_enabled ................. False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   global_rank .................. 0
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 8
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   gradient_clipping ............ 1.0
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 1
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   loss_scale ................... 1.0
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   memory_breakdown ............. False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   mics_shard_size .............. -1
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   optimizer_name ............... adamw
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   optimizer_params ............. {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.0}
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   pld_enabled .................. False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   pld_params ................... False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   prescale_gradients ........... False
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   scheduler_name ............... WarmupDecayLR
+[2023-10-29 18:00:47,372] [INFO] [config.py:971:print]   scheduler_params ............. {'last_batch_iteration': -1, 'total_num_steps': 460, 'warmup_min_lr': 0, 'warmup_max_lr': 0.0001, 'warmup_num_steps': 400}
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   sparse_attention ............. None
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   steps_per_print .............. inf
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   train_batch_size ............. 512
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  32
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   use_node_local_storage ....... False
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   weight_quantization_config ... None
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   world_size ................... 2
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  False
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   zero_config .................. stage=2 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='cpu', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=True) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=True, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   zero_enabled ................. True
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
+[2023-10-29 18:00:47,373] [INFO] [config.py:971:print]   zero_optimization_stage ...... 2
+[2023-10-29 18:00:47,373] [INFO] [config.py:957:print_user_config]   json = {
+    "fp16": {
+        "enabled": false, 
+        "loss_scale": 0, 
+        "loss_scale_window": 1000, 
+        "initial_scale_power": 16, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1
+    }, 
+    "optimizer": {
+        "type": "AdamW", 
+        "params": {
+            "lr": 0.0001, 
+            "betas": [0.9, 0.999], 
+            "eps": 1e-08, 
+            "weight_decay": 0.0
+        }
+    }, 
+    "scheduler": {
+        "type": "WarmupDecayLR", 
+        "params": {
+            "last_batch_iteration": -1, 
+            "total_num_steps": 460, 
+            "warmup_min_lr": 0, 
+            "warmup_max_lr": 0.0001, 
+            "warmup_num_steps": 400
+        }
+    }, 
+    "zero_optimization": {
+        "stage": 2, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "offload_param": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "allgather_partitions": true, 
+        "allgather_bucket_size": 5.000000e+08, 
+        "overlap_comm": true, 
+        "reduce_scatter": true, 
+        "reduce_bucket_size": 5.000000e+08, 
+        "contiguous_gradients": true
+    }, 
+    "activation_checkpointing": {
+        "partition_activations": false, 
+        "cpu_checkpointing": false, 
+        "contiguous_memory_optimization": false, 
+        "number_checkpoints": null, 
+        "synchronize_checkpoint_boundary": false, 
+        "profile": false
+    }, 
+    "gradient_accumulation_steps": 8, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": inf, 
+    "train_batch_size": 512, 
+    "min_lr": 5e-07, 
+    "train_micro_batch_size_per_gpu": 32, 
+    "wall_clock_breakdown": false, 
+    "bf16": {
+        "enabled": true
+    }
+}
+[INFO|trainer.py:1712] 2023-10-29 18:00:47,373 >> ***** Running training *****
+[INFO|trainer.py:1713] 2023-10-29 18:00:47,373 >>   Num examples = 24,000
+[INFO|trainer.py:1714] 2023-10-29 18:00:47,373 >>   Num Epochs = 10
+[INFO|trainer.py:1715] 2023-10-29 18:00:47,373 >>   Instantaneous batch size per device = 32
+[INFO|trainer.py:1718] 2023-10-29 18:00:47,373 >>   Total train batch size (w. parallel, distributed & accumulation) = 512
+[INFO|trainer.py:1719] 2023-10-29 18:00:47,373 >>   Gradient Accumulation steps = 8
+[INFO|trainer.py:1720] 2023-10-29 18:00:47,374 >>   Total optimization steps = 460
+[INFO|trainer.py:1721] 2023-10-29 18:00:47,380 >>   Number of trainable parameters = 19,988,480
+  0%|          | 0/460 [00:00<?, ?it/s][WARNING|logging.py:305] 2023-10-29 18:00:47,423 >> `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+[WARNING|logging.py:305] 2023-10-29 18:00:47,425 >> `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+  0%|          | 1/460 [01:22<10:30:54, 82.47s/it]  0%|          | 2/460 [02:45<10:31:26, 82.72s/it]  1%|          | 3/460 [04:11<10:42:42, 84.38s/it]  1%|          | 4/460 [05:38<10:49:02, 85.40s/it]  1%|          | 5/460 [07:06<10:53:20, 86.16s/it]  1%|▏         | 6/460 [08:34<10:57:59, 86.96s/it]  2%|▏         | 7/460 [09:58<10:48:57, 85.96s/it]  2%|▏         | 8/460 [11:23<10:43:58, 85.48s/it]  2%|▏         | 9/460 [12:52<10:52:17, 86.78s/it]  2%|▏         | 10/460 [14:20<10:53:42, 87.16s/it]  2%|▏         | 11/460 [15:49<10:55:10, 87.55s/it]  3%|▎         | 12/460 [17:16<10:53:03, 87.46s/it]  3%|▎         | 13/460 [18:45<10:55:06, 87.93s/it]  3%|▎         | 14/460 [20:10<10:46:11, 86.93s/it]  3%|▎         | 15/460 [21:41<10:54:58, 88.31s/it]  3%|▎         | 16/460 [23:07<10:49:19, 87.75s/it]  4%|▎         | 17/460 [24:36<10:49:53, 88.02s/it]  4%|▍         | 18/460 [25:59<10:37:36, 86.55s/it]  4%|▍         | 19/460 [27:23<10:29:12, 85.61s/it]  4%|▍         | 20/460 [28:53<10:37:50, 86.98s/it][INFO|trainer.py:3115] 2023-10-29 18:29:40,745 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 18:29:40,746 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 18:29:40,746 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A
+                                               [A                                                   
+{'eval_loss': 1.2889844179153442, 'eval_accuracy': 0.5319677996422183, 'eval_runtime': 46.3548, 'eval_samples_per_second': 17.258, 'eval_steps_per_second': 0.28, 'epoch': 0.43}
+100%|██████████| 13/13 [00:42<00:00,  3.47s/it][A  4%|▍         | 20/460 [29:39<10:37:50, 86.98s/it]
+                                               [A  5%|▍         | 21/460 [31:01<12:07:07, 99.38s/it]  5%|▍         | 22/460 [32:29<11:39:44, 95.85s/it]  5%|▌         | 23/460 [33:55<11:17:08, 92.97s/it]  5%|▌         | 24/460 [35:26<11:11:22, 92.39s/it]  5%|▌         | 25/460 [36:50<10:50:39, 89.75s/it]  6%|▌         | 26/460 [38:16<10:41:22, 88.67s/it]  6%|▌         | 27/460 [39:45<10:40:05, 88.70s/it]  6%|▌         | 28/460 [41:07<10:25:11, 86.83s/it]  6%|▋         | 29/460 [42:39<10:35:39, 88.49s/it]  7%|▋         | 30/460 [44:03<10:23:11, 86.96s/it]  7%|▋         | 31/460 [45:26<10:13:15, 85.77s/it]  7%|▋         | 32/460 [46:52<10:13:08, 85.95s/it]  7%|▋         | 33/460 [48:24<10:24:47, 87.79s/it]  7%|▋         | 34/460 [49:52<10:22:23, 87.66s/it]  8%|▊         | 35/460 [51:19<10:19:54, 87.52s/it]  8%|▊         | 36/460 [52:43<10:12:07, 86.62s/it]  8%|▊         | 37/460 [54:11<10:13:26, 87.01s/it]  8%|▊         | 38/460 [55:34<10:02:05, 85.61s/it]  8%|▊         | 39/460 [57:04<10:09:59, 86.94s/it]  9%|▊         | 40/460 [58:27<10:00:10, 85.74s/it][INFO|trainer.py:3115] 2023-10-29 18:59:14,442 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 18:59:14,442 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 18:59:14,442 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A
+                                               [A                                                   
+{'eval_loss': 0.5442767143249512, 'eval_accuracy': 0.6256618962432916, 'eval_runtime': 45.3075, 'eval_samples_per_second': 17.657, 'eval_steps_per_second': 0.287, 'epoch': 0.85}
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A  9%|▊         | 40/460 [59:12<10:00:10, 85.74s/it]
+                                               [A  9%|▉         | 41/460 [1:00:44<11:48:06, 101.40s/it]  9%|▉         | 42/460 [1:02:07<11:07:00, 95.74s/it]   9%|▉         | 43/460 [1:03:39<10:57:21, 94.58s/it] 10%|▉         | 44/460 [1:05:00<10:27:05, 90.45s/it] 10%|▉         | 45/460 [1:06:19<10:03:09, 87.20s/it] 10%|█         | 46/460 [1:07:47<10:01:42, 87.20s/it] 10%|█         | 47/460 [1:09:09<9:50:21, 85.77s/it]  10%|█         | 48/460 [1:10:36<9:51:28, 86.14s/it] 11%|█         | 49/460 [1:12:02<9:49:19, 86.03s/it] 11%|█         | 50/460 [1:13:25<9:42:27, 85.24s/it] 11%|█         | 51/460 [1:14:46<9:31:17, 83.81s/it] 11%|█▏        | 52/460 [1:16:10<9:31:16, 84.01s/it] 12%|█▏        | 53/460 [1:17:42<9:46:09, 86.41s/it] 12%|█▏        | 54/460 [1:19:05<9:38:02, 85.43s/it] 12%|█▏        | 55/460 [1:20:32<9:38:51, 85.76s/it] 12%|█▏        | 56/460 [1:22:01<9:44:43, 86.84s/it] 12%|█▏        | 57/460 [1:23:26<9:39:18, 86.25s/it] 13%|█▎        | 58/460 [1:24:52<9:36:32, 86.05s/it] 13%|█▎        | 59/460 [1:26:21<9:42:09, 87.11s/it] 13%|█▎        | 60/460 [1:27:56<9:55:35, 89.34s/it][INFO|trainer.py:3115] 2023-10-29 19:28:43,591 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 19:28:43,592 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 19:28:43,592 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.24s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.39s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A
+                                               [A                                                    
+{'eval_loss': 0.48785555362701416, 'eval_accuracy': 0.629662343470483, 'eval_runtime': 45.2494, 'eval_samples_per_second': 17.68, 'eval_steps_per_second': 0.287, 'epoch': 1.28}
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A 13%|█▎        | 60/460 [1:28:41<9:55:35, 89.34s/it]
+                                               [A 13%|█▎        | 61/460 [1:30:04<11:11:59, 101.05s/it] 13%|█▎        | 62/460 [1:31:36<10:52:41, 98.40s/it]  14%|█▎        | 63/460 [1:33:02<10:25:33, 94.54s/it] 14%|█▍        | 64/460 [1:34:26<10:03:18, 91.41s/it] 14%|█▍        | 65/460 [1:35:50<9:46:50, 89.14s/it]  14%|█▍        | 66/460 [1:37:21<9:50:10, 89.87s/it] 15%|█▍        | 67/460 [1:38:43<9:33:01, 87.49s/it] 15%|█▍        | 68/460 [1:40:08<9:25:35, 86.57s/it] 15%|█▌        | 69/460 [1:41:31<9:17:45, 85.59s/it] 15%|█▌        | 70/460 [1:42:54<9:11:40, 84.87s/it] 15%|█▌        | 71/460 [1:44:17<9:05:20, 84.11s/it] 16%|█▌        | 72/460 [1:45:53<9:28:06, 87.85s/it] 16%|█▌        | 73/460 [1:47:25<9:34:54, 89.13s/it] 16%|█▌        | 74/460 [1:48:48<9:21:35, 87.29s/it] 16%|█▋        | 75/460 [1:50:16<9:21:50, 87.56s/it] 17%|█▋        | 76/460 [1:51:47<9:25:49, 88.41s/it] 17%|█▋        | 77/460 [1:53:16<9:26:32, 88.75s/it] 17%|█▋        | 78/460 [1:54:39<9:13:26, 86.93s/it] 17%|█▋        | 79/460 [1:56:03<9:06:12, 86.02s/it] 17%|█▋        | 80/460 [1:57:35<9:15:44, 87.75s/it][INFO|trainer.py:3115] 2023-10-29 19:58:22,619 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 19:58:22,619 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 19:58:22,619 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                    
+                                               [A{'eval_loss': 0.47498413920402527, 'eval_accuracy': 0.631180679785331, 'eval_runtime': 45.3289, 'eval_samples_per_second': 17.649, 'eval_steps_per_second': 0.287, 'epoch': 1.71}
+ 17%|█▋        | 80/460 [1:58:20<9:15:44, 87.75s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 18%|█▊        | 81/460 [1:59:47<10:39:12, 101.19s/it] 18%|█▊        | 82/460 [2:01:14<10:09:32, 96.75s/it]  18%|█▊        | 83/460 [2:02:43<9:53:07, 94.40s/it]  18%|█▊        | 84/460 [2:04:05<9:28:33, 90.73s/it] 18%|█▊        | 85/460 [2:05:35<9:25:20, 90.46s/it] 19%|█▊        | 86/460 [2:06:59<9:12:12, 88.59s/it] 19%|█▉        | 87/460 [2:08:18<8:52:34, 85.67s/it] 19%|█▉        | 88/460 [2:09:40<8:44:49, 84.65s/it] 19%|█▉        | 89/460 [2:11:04<8:41:33, 84.35s/it] 20%|█▉        | 90/460 [2:12:27<8:38:43, 84.12s/it] 20%|█▉        | 91/460 [2:13:56<8:46:34, 85.62s/it] 20%|██        | 92/460 [2:15:24<8:49:07, 86.27s/it] 20%|██        | 93/460 [2:16:46<8:39:22, 84.91s/it] 20%|██        | 94/460 [2:18:16<8:48:12, 86.59s/it] 21%|██        | 95/460 [2:19:41<8:42:59, 85.97s/it] 21%|██        | 96/460 [2:21:09<8:44:39, 86.48s/it] 21%|██        | 97/460 [2:22:31<8:35:43, 85.24s/it] 21%|██▏       | 98/460 [2:23:55<8:32:44, 84.99s/it] 22%|██▏       | 99/460 [2:25:21<8:33:14, 85.30s/it] 22%|██▏       | 100/460 [2:26:51<8:38:50, 86.47s/it][INFO|trainer.py:3115] 2023-10-29 20:27:38,408 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 20:27:38,408 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 20:27:38,408 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.46832266449928284, 'eval_accuracy': 0.6317486583184257, 'eval_runtime': 45.2831, 'eval_samples_per_second': 17.667, 'eval_steps_per_second': 0.287, 'epoch': 2.13}
+ 22%|██▏       | 100/460 [2:27:36<8:38:50, 86.47s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 22%|██▏       | 101/460 [2:29:01<9:55:33, 99.54s/it] 22%|██▏       | 102/460 [2:30:26<9:29:10, 95.39s/it] 22%|██▏       | 103/460 [2:31:53<9:12:05, 92.79s/it] 23%|██▎       | 104/460 [2:33:15<8:51:09, 89.52s/it] 23%|██▎       | 105/460 [2:34:41<8:43:39, 88.51s/it] 23%|██▎       | 106/460 [2:36:10<8:43:18, 88.70s/it] 23%|██▎       | 107/460 [2:37:36<8:36:25, 87.78s/it] 23%|██▎       | 108/460 [2:38:58<8:25:23, 86.15s/it] 24%|██▎       | 109/460 [2:40:25<8:25:28, 86.41s/it] 24%|██▍       | 110/460 [2:41:55<8:29:21, 87.32s/it] 24%|██▍       | 111/460 [2:43:22<8:28:13, 87.37s/it] 24%|██▍       | 112/460 [2:44:53<8:32:34, 88.37s/it] 25%|██▍       | 113/460 [2:46:18<8:24:47, 87.29s/it] 25%|██▍       | 114/460 [2:47:46<8:24:32, 87.49s/it] 25%|██▌       | 115/460 [2:49:15<8:27:22, 88.24s/it] 25%|██▌       | 116/460 [2:50:47<8:30:48, 89.09s/it] 25%|██▌       | 117/460 [2:52:06<8:12:15, 86.11s/it] 26%|██▌       | 118/460 [2:53:31<8:08:38, 85.73s/it] 26%|██▌       | 119/460 [2:55:05<8:22:09, 88.36s/it] 26%|██▌       | 120/460 [2:56:29<8:13:21, 87.06s/it][INFO|trainer.py:3115] 2023-10-29 20:57:17,000 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 20:57:17,000 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 20:57:17,000 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.46336105465888977, 'eval_accuracy': 0.6324172629695886, 'eval_runtime': 45.2812, 'eval_samples_per_second': 17.667, 'eval_steps_per_second': 0.287, 'epoch': 2.56}
+ 26%|██▌       | 120/460 [2:57:14<8:13:21, 87.06s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 26%|██▋       | 121/460 [2:58:44<9:33:17, 101.47s/it] 27%|██▋       | 122/460 [3:00:08<9:02:26, 96.29s/it]  27%|██▋       | 123/460 [3:01:29<8:34:06, 91.53s/it] 27%|██▋       | 124/460 [3:02:54<8:21:31, 89.56s/it] 27%|██▋       | 125/460 [3:04:17<8:08:49, 87.55s/it] 27%|██▋       | 126/460 [3:05:40<8:00:04, 86.24s/it] 28%|██▊       | 127/460 [3:07:06<7:58:06, 86.15s/it] 28%|██▊       | 128/460 [3:08:46<8:19:36, 90.29s/it] 28%|██▊       | 129/460 [3:10:14<8:14:15, 89.59s/it] 28%|██▊       | 130/460 [3:11:39<8:05:26, 88.26s/it] 28%|██▊       | 131/460 [3:13:04<7:58:21, 87.24s/it] 29%|██▊       | 132/460 [3:14:25<7:46:25, 85.32s/it] 29%|██▉       | 133/460 [3:15:48<7:42:44, 84.91s/it] 29%|██▉       | 134/460 [3:17:11<7:36:40, 84.05s/it] 29%|██▉       | 135/460 [3:18:36<7:37:29, 84.46s/it] 30%|██▉       | 136/460 [3:20:03<7:40:59, 85.37s/it] 30%|██▉       | 137/460 [3:21:33<7:47:03, 86.76s/it] 30%|███       | 138/460 [3:23:07<7:56:57, 88.87s/it] 30%|███       | 139/460 [3:24:34<7:51:24, 88.11s/it] 30%|███       | 140/460 [3:25:57<7:42:22, 86.70s/it][INFO|trainer.py:3115] 2023-10-29 21:26:44,852 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 21:26:44,852 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 21:26:44,852 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.21s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.39s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.45928895473480225, 'eval_accuracy': 0.6326431127012523, 'eval_runtime': 45.2408, 'eval_samples_per_second': 17.683, 'eval_steps_per_second': 0.287, 'epoch': 2.99}
+ 30%|███       | 140/460 [3:26:42<7:42:22, 86.70s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 31%|███       | 141/460 [3:28:08<8:51:30, 99.97s/it] 31%|███       | 142/460 [3:29:33<8:26:15, 95.52s/it] 31%|███       | 143/460 [3:30:57<8:06:45, 92.13s/it] 31%|███▏      | 144/460 [3:32:21<7:52:08, 89.65s/it] 32%|███▏      | 145/460 [3:33:49<7:48:36, 89.26s/it] 32%|███▏      | 146/460 [3:35:12<7:35:46, 87.09s/it] 32%|███▏      | 147/460 [3:36:35<7:28:29, 85.97s/it] 32%|███▏      | 148/460 [3:38:06<7:34:26, 87.39s/it] 32%|███▏      | 149/460 [3:39:31<7:30:10, 86.85s/it] 33%|███▎      | 150/460 [3:40:59<7:30:36, 87.21s/it] 33%|███▎      | 151/460 [3:42:22<7:22:12, 85.87s/it] 33%|███▎      | 152/460 [3:43:49<7:23:12, 86.34s/it] 33%|███▎      | 153/460 [3:45:16<7:21:33, 86.30s/it] 33%|███▎      | 154/460 [3:46:37<7:13:10, 84.94s/it] 34%|███▎      | 155/460 [3:48:00<7:08:05, 84.22s/it] 34%|███▍      | 156/460 [3:49:29<7:14:07, 85.68s/it] 34%|███▍      | 157/460 [3:50:56<7:14:48, 86.10s/it] 34%|███▍      | 158/460 [3:52:23<7:14:35, 86.34s/it] 35%|███▍      | 159/460 [3:53:47<7:10:10, 85.75s/it] 35%|███▍      | 160/460 [3:55:17<7:14:41, 86.94s/it][INFO|trainer.py:3115] 2023-10-29 21:56:04,929 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 21:56:04,929 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 21:56:04,930 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.45553943514823914, 'eval_accuracy': 0.6330500894454383, 'eval_runtime': 45.2829, 'eval_samples_per_second': 17.667, 'eval_steps_per_second': 0.287, 'epoch': 3.41}
+ 35%|███▍      | 160/460 [3:56:02<7:14:41, 86.94s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 35%|███▌      | 161/460 [3:57:35<8:29:24, 102.22s/it] 35%|███▌      | 162/460 [3:59:04<8:08:50, 98.43s/it]  35%|███▌      | 163/460 [4:00:33<7:51:57, 95.34s/it] 36%|███▌      | 164/460 [4:02:04<7:44:39, 94.19s/it] 36%|███▌      | 165/460 [4:03:31<7:32:44, 92.08s/it] 36%|███▌      | 166/460 [4:04:55<7:18:45, 89.54s/it] 36%|███▋      | 167/460 [4:06:31<7:26:34, 91.45s/it] 37%|███▋      | 168/460 [4:07:59<7:19:34, 90.32s/it] 37%|███▋      | 169/460 [4:09:22<7:08:08, 88.28s/it] 37%|███▋      | 170/460 [4:10:41<6:52:46, 85.40s/it] 37%|███▋      | 171/460 [4:12:10<6:56:45, 86.52s/it] 37%|███▋      | 172/460 [4:13:40<7:00:16, 87.56s/it] 38%|███▊      | 173/460 [4:15:10<7:01:57, 88.21s/it] 38%|███▊      | 174/460 [4:16:42<7:05:55, 89.36s/it] 38%|███▊      | 175/460 [4:18:07<6:58:46, 88.16s/it] 38%|███▊      | 176/460 [4:19:37<6:59:34, 88.64s/it] 38%|███▊      | 177/460 [4:21:07<6:59:54, 89.03s/it] 39%|███▊      | 178/460 [4:22:37<7:00:01, 89.37s/it] 39%|███▉      | 179/460 [4:24:10<7:03:53, 90.51s/it] 39%|███▉      | 180/460 [4:25:35<6:54:44, 88.87s/it][INFO|trainer.py:3115] 2023-10-29 22:26:22,928 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 22:26:22,928 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 22:26:22,928 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.45275795459747314, 'eval_accuracy': 0.6332468694096601, 'eval_runtime': 45.2779, 'eval_samples_per_second': 17.669, 'eval_steps_per_second': 0.287, 'epoch': 3.84}
+ 39%|███▉      | 180/460 [4:26:20<6:54:44, 88.87s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 39%|███▉      | 181/460 [4:27:45<7:50:05, 101.09s/it] 40%|███▉      | 182/460 [4:29:12<7:29:19, 96.98s/it]  40%|███▉      | 183/460 [4:30:40<7:15:10, 94.26s/it] 40%|████      | 184/460 [4:32:04<6:59:59, 91.30s/it] 40%|████      | 185/460 [4:33:38<7:01:43, 92.01s/it] 40%|████      | 186/460 [4:35:06<6:54:59, 90.87s/it] 41%|████      | 187/460 [4:36:41<6:58:31, 91.98s/it] 41%|████      | 188/460 [4:38:05<6:46:16, 89.62s/it] 41%|████      | 189/460 [4:39:39<6:50:33, 90.90s/it] 41%|████▏     | 190/460 [4:41:07<6:44:55, 89.98s/it] 42%|████▏     | 191/460 [4:42:32<6:37:08, 88.58s/it] 42%|████▏     | 192/460 [4:44:05<6:41:55, 89.98s/it] 42%|████▏     | 193/460 [4:45:31<6:34:12, 88.59s/it] 42%|████▏     | 194/460 [4:47:00<6:33:23, 88.73s/it] 42%|████▏     | 195/460 [4:48:23<6:24:43, 87.11s/it] 43%|████▎     | 196/460 [4:49:51<6:24:58, 87.49s/it] 43%|████▎     | 197/460 [4:51:20<6:25:20, 87.91s/it] 43%|████▎     | 198/460 [4:52:50<6:26:52, 88.60s/it] 43%|████▎     | 199/460 [4:54:18<6:23:44, 88.22s/it] 43%|████▎     | 200/460 [4:55:40<6:14:25, 86.41s/it][INFO|trainer.py:3115] 2023-10-29 22:56:27,792 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 22:56:27,793 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 22:56:27,793 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.4505941867828369, 'eval_accuracy': 0.633613595706619, 'eval_runtime': 45.2911, 'eval_samples_per_second': 17.664, 'eval_steps_per_second': 0.287, 'epoch': 4.27}
+ 43%|████▎     | 200/460 [4:56:25<6:14:25, 86.41s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A[INFO|trainer.py:2841] 2023-10-29 22:57:16,031 >> Saving model checkpoint to llama/checkpoint-200
+[INFO|tokenization_utils_base.py:2235] 2023-10-29 22:57:16,075 >> tokenizer config file saved in llama/checkpoint-200/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2242] 2023-10-29 22:57:16,075 >> Special tokens file saved in llama/checkpoint-200/special_tokens_map.json
+[2023-10-29 22:57:16,326] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step200 is about to be saved!
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+[2023-10-29 22:57:18,187] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: llama/checkpoint-200/global_step200/mp_rank_00_model_states.pt
+[2023-10-29 22:57:18,187] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-200/global_step200/mp_rank_00_model_states.pt...
+[2023-10-29 22:57:25,324] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-200/global_step200/mp_rank_00_model_states.pt.
+[2023-10-29 22:57:25,355] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-200/global_step200/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt...
+[2023-10-29 22:57:25,494] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-200/global_step200/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt.
+[2023-10-29 22:57:25,495] [INFO] [engine.py:3375:_save_zero_checkpoint] zero checkpoint saved llama/checkpoint-200/global_step200/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt
+[2023-10-29 22:57:25,495] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step200 is ready now!
++++++++++++++++++save call back++++++++++++++++
+ 44%|████▎     | 201/460 [4:58:01<7:23:16, 102.69s/it] 44%|████▍     | 202/460 [4:59:27<7:00:55, 97.89s/it]  44%|████▍     | 203/460 [5:00:56<6:48:08, 95.28s/it] 44%|████▍     | 204/460 [5:02:22<6:33:32, 92.23s/it] 45%|████▍     | 205/460 [5:03:45<6:21:00, 89.65s/it] 45%|████▍     | 206/460 [5:05:07<6:09:04, 87.18s/it] 45%|████▌     | 207/460 [5:06:32<6:05:52, 86.77s/it] 45%|████▌     | 208/460 [5:07:59<6:03:38, 86.58s/it] 45%|████▌     | 209/460 [5:09:23<5:59:12, 85.87s/it] 46%|████▌     | 210/460 [5:10:52<6:02:08, 86.91s/it] 46%|████▌     | 211/460 [5:12:22<6:04:43, 87.88s/it] 46%|████▌     | 212/460 [5:13:50<6:02:38, 87.74s/it] 46%|████▋     | 213/460 [5:15:18<6:01:26, 87.80s/it] 47%|████▋     | 214/460 [5:16:46<6:00:44, 87.99s/it] 47%|████▋     | 215/460 [5:18:07<5:50:44, 85.89s/it] 47%|████▋     | 216/460 [5:19:26<5:40:12, 83.66s/it] 47%|████▋     | 217/460 [5:20:52<5:42:29, 84.57s/it] 47%|████▋     | 218/460 [5:22:22<5:47:32, 86.17s/it] 48%|████▊     | 219/460 [5:23:50<5:47:43, 86.57s/it] 48%|████▊     | 220/460 [5:25:12<5:41:34, 85.39s/it][INFO|trainer.py:3115] 2023-10-29 23:26:00,161 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 23:26:00,161 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 23:26:00,161 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.4490402340888977, 'eval_accuracy': 0.6337678890876566, 'eval_runtime': 45.2742, 'eval_samples_per_second': 17.67, 'eval_steps_per_second': 0.287, 'epoch': 4.69}
+ 48%|████▊     | 220/460 [5:25:58<5:41:34, 85.39s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 48%|████▊     | 221/460 [5:27:19<6:29:53, 97.88s/it] 48%|████▊     | 222/460 [5:28:50<6:19:21, 95.63s/it] 48%|████▊     | 223/460 [5:30:15<6:05:34, 92.55s/it] 49%|████▊     | 224/460 [5:31:39<5:54:09, 90.04s/it] 49%|████▉     | 225/460 [5:33:07<5:49:48, 89.31s/it] 49%|████▉     | 226/460 [5:34:30<5:41:21, 87.53s/it] 49%|████▉     | 227/460 [5:36:01<5:43:17, 88.40s/it] 50%|████▉     | 228/460 [5:37:22<5:33:49, 86.34s/it] 50%|████▉     | 229/460 [5:38:47<5:30:41, 85.90s/it] 50%|█████     | 230/460 [5:40:12<5:27:41, 85.49s/it] 50%|█████     | 231/460 [5:41:36<5:24:43, 85.08s/it] 50%|█████     | 232/460 [5:42:58<5:19:37, 84.11s/it] 51%|█████     | 233/460 [5:44:25<5:22:28, 85.24s/it] 51%|█████     | 234/460 [5:45:52<5:22:12, 85.54s/it] 51%|█████     | 235/460 [5:47:15<5:18:13, 84.86s/it] 51%|█████▏    | 236/460 [5:48:43<5:20:04, 85.74s/it] 52%|█████▏    | 237/460 [5:50:05<5:14:50, 84.71s/it] 52%|█████▏    | 238/460 [5:51:30<5:13:41, 84.78s/it] 52%|█████▏    | 239/460 [5:53:00<5:17:47, 86.28s/it] 52%|█████▏    | 240/460 [5:54:29<5:19:13, 87.06s/it][INFO|trainer.py:3115] 2023-10-29 23:55:16,506 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 23:55:16,506 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 23:55:16,506 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.4482249319553375, 'eval_accuracy': 0.6339780858676207, 'eval_runtime': 45.2571, 'eval_samples_per_second': 17.677, 'eval_steps_per_second': 0.287, 'epoch': 5.12}
+ 52%|█████▏    | 240/460 [5:55:14<5:19:13, 87.06s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 52%|█████▏    | 241/460 [5:56:41<6:06:58, 100.54s/it] 53%|█████▎    | 242/460 [5:58:12<5:54:55, 97.69s/it]  53%|█████▎    | 243/460 [5:59:34<5:36:21, 93.00s/it] 53%|█████▎    | 244/460 [6:00:56<5:23:39, 89.90s/it] 53%|█████▎    | 245/460 [6:02:24<5:19:31, 89.17s/it] 53%|█████▎    | 246/460 [6:03:52<5:16:49, 88.83s/it] 54%|█████▎    | 247/460 [6:05:21<5:15:46, 88.95s/it] 54%|█████▍    | 248/460 [6:06:47<5:10:47, 87.96s/it] 54%|█████▍    | 249/460 [6:08:10<5:03:59, 86.44s/it] 54%|█████▍    | 250/460 [6:09:38<5:04:59, 87.14s/it] 55%|█████▍    | 251/460 [6:11:01<4:59:10, 85.89s/it] 55%|█████▍    | 252/460 [6:12:27<4:57:01, 85.68s/it] 55%|█████▌    | 253/460 [6:13:54<4:57:13, 86.15s/it] 55%|█████▌    | 254/460 [6:15:26<5:01:41, 87.87s/it] 55%|█████▌    | 255/460 [6:16:45<4:51:32, 85.33s/it] 56%|█████▌    | 256/460 [6:18:18<4:58:04, 87.67s/it] 56%|█████▌    | 257/460 [6:19:41<4:51:57, 86.30s/it] 56%|█████▌    | 258/460 [6:21:17<5:00:12, 89.17s/it] 56%|█████▋    | 259/460 [6:22:42<4:54:07, 87.80s/it] 57%|█████▋    | 260/460 [6:24:03<4:46:18, 85.89s/it][INFO|trainer.py:3115] 2023-10-30 00:24:51,151 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 00:24:51,151 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 00:24:51,151 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.4464256763458252, 'eval_accuracy': 0.6340898926654741, 'eval_runtime': 45.2789, 'eval_samples_per_second': 17.668, 'eval_steps_per_second': 0.287, 'epoch': 5.55}
+ 57%|█████▋    | 260/460 [6:24:49<4:46:18, 85.89s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 57%|█████▋    | 261/460 [6:26:12<5:27:40, 98.80s/it] 57%|█████▋    | 262/460 [6:27:39<5:13:56, 95.13s/it] 57%|█████▋    | 263/460 [6:29:04<5:02:10, 92.03s/it] 57%|█████▋    | 264/460 [6:30:27<4:52:21, 89.50s/it] 58%|█████▊    | 265/460 [6:31:52<4:46:06, 88.03s/it] 58%|█████▊    | 266/460 [6:33:20<4:45:05, 88.17s/it] 58%|█████▊    | 267/460 [6:34:49<4:43:52, 88.25s/it] 58%|█████▊    | 268/460 [6:36:17<4:42:14, 88.20s/it] 58%|█████▊    | 269/460 [6:37:36<4:32:03, 85.46s/it] 59%|█████▊    | 270/460 [6:39:03<4:32:33, 86.07s/it] 59%|█████▉    | 271/460 [6:40:32<4:33:12, 86.73s/it] 59%|█████▉    | 272/460 [6:41:58<4:31:13, 86.56s/it] 59%|█████▉    | 273/460 [6:43:25<4:30:50, 86.90s/it] 60%|█████▉    | 274/460 [6:44:52<4:29:27, 86.92s/it] 60%|█████▉    | 275/460 [6:46:24<4:32:45, 88.46s/it] 60%|██████    | 276/460 [6:47:51<4:29:55, 88.02s/it] 60%|██████    | 277/460 [6:49:17<4:26:20, 87.33s/it] 60%|██████    | 278/460 [6:50:41<4:21:43, 86.28s/it] 61%|██████    | 279/460 [6:52:14<4:26:38, 88.39s/it] 61%|██████    | 280/460 [6:53:42<4:24:14, 88.08s/it][INFO|trainer.py:3115] 2023-10-30 00:54:29,594 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 00:54:29,595 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 00:54:29,595 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.44583719968795776, 'eval_accuracy': 0.634121198568873, 'eval_runtime': 45.2749, 'eval_samples_per_second': 17.67, 'eval_steps_per_second': 0.287, 'epoch': 5.97}
+ 61%|██████    | 280/460 [6:54:27<4:24:14, 88.08s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 61%|██████    | 281/460 [6:55:50<4:58:52, 100.18s/it] 61%|██████▏   | 282/460 [6:57:17<4:45:11, 96.13s/it]  62%|██████▏   | 283/460 [6:58:43<4:34:37, 93.09s/it] 62%|██████▏   | 284/460 [7:00:10<4:27:39, 91.25s/it] 62%|██████▏   | 285/460 [7:01:41<4:26:33, 91.39s/it] 62%|██████▏   | 286/460 [7:03:04<4:17:33, 88.81s/it] 62%|██████▏   | 287/460 [7:04:27<4:10:43, 86.96s/it] 63%|██████▎   | 288/460 [7:05:56<4:11:08, 87.61s/it] 63%|██████▎   | 289/460 [7:07:24<4:09:38, 87.59s/it] 63%|██████▎   | 290/460 [7:08:51<4:08:08, 87.58s/it] 63%|██████▎   | 291/460 [7:10:09<3:58:38, 84.73s/it] 63%|██████▎   | 292/460 [7:11:32<3:55:59, 84.28s/it] 64%|██████▎   | 293/460 [7:13:01<3:57:58, 85.50s/it] 64%|██████▍   | 294/460 [7:14:21<3:52:26, 84.01s/it] 64%|██████▍   | 295/460 [7:15:43<3:49:28, 83.44s/it] 64%|██████▍   | 296/460 [7:17:10<3:50:13, 84.23s/it] 65%|██████▍   | 297/460 [7:18:31<3:46:51, 83.51s/it] 65%|██████▍   | 298/460 [7:19:57<3:47:13, 84.16s/it] 65%|██████▌   | 299/460 [7:21:26<3:49:47, 85.63s/it] 65%|██████▌   | 300/460 [7:22:44<3:42:23, 83.40s/it][INFO|trainer.py:3115] 2023-10-30 01:23:32,153 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 01:23:32,153 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 01:23:32,153 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.4454350173473358, 'eval_accuracy': 0.633953488372093, 'eval_runtime': 45.2738, 'eval_samples_per_second': 17.67, 'eval_steps_per_second': 0.287, 'epoch': 6.4}
+ 65%|██████▌   | 300/460 [7:23:30<3:42:23, 83.40s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 65%|██████▌   | 301/460 [7:24:57<4:20:06, 98.15s/it] 66%|██████▌   | 302/460 [7:26:19<4:05:57, 93.40s/it] 66%|██████▌   | 303/460 [7:27:49<4:01:28, 92.28s/it] 66%|██████▌   | 304/460 [7:29:25<4:02:38, 93.32s/it] 66%|██████▋   | 305/460 [7:30:50<3:54:39, 90.83s/it] 67%|██████▋   | 306/460 [7:32:12<3:46:27, 88.23s/it] 67%|██████▋   | 307/460 [7:33:39<3:44:02, 87.86s/it] 67%|██████▋   | 308/460 [7:35:01<3:38:39, 86.31s/it] 67%|██████▋   | 309/460 [7:36:30<3:39:00, 87.02s/it] 67%|██████▋   | 310/460 [7:37:54<3:35:02, 86.02s/it] 68%|██████▊   | 311/460 [7:39:21<3:34:50, 86.51s/it] 68%|██████▊   | 312/460 [7:40:42<3:29:05, 84.76s/it] 68%|██████▊   | 313/460 [7:42:13<3:32:11, 86.61s/it] 68%|██████▊   | 314/460 [7:43:40<3:30:48, 86.63s/it] 68%|██████▊   | 315/460 [7:45:06<3:28:47, 86.39s/it] 69%|██████▊   | 316/460 [7:46:27<3:23:29, 84.79s/it] 69%|██████▉   | 317/460 [7:47:53<3:22:52, 85.12s/it] 69%|██████▉   | 318/460 [7:49:20<3:22:53, 85.73s/it] 69%|██████▉   | 319/460 [7:50:45<3:21:25, 85.71s/it] 70%|██████▉   | 320/460 [7:52:12<3:20:43, 86.02s/it][INFO|trainer.py:3115] 2023-10-30 01:53:00,000 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 01:53:00,000 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 01:53:00,000 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.44561949372291565, 'eval_accuracy': 0.6341793381037567, 'eval_runtime': 45.291, 'eval_samples_per_second': 17.664, 'eval_steps_per_second': 0.287, 'epoch': 6.83}
+ 70%|██████▉   | 320/460 [7:52:57<3:20:43, 86.02s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 70%|██████▉   | 321/460 [7:54:19<3:47:51, 98.36s/it] 70%|███████   | 322/460 [7:55:49<3:39:56, 95.63s/it] 70%|███████   | 323/460 [7:57:19<3:34:43, 94.04s/it] 70%|███████   | 324/460 [7:58:45<3:28:01, 91.77s/it] 71%|███████   | 325/460 [8:00:07<3:19:40, 88.75s/it] 71%|███████   | 326/460 [8:01:34<3:17:18, 88.35s/it] 71%|███████   | 327/460 [8:02:58<3:12:45, 86.96s/it] 71%|███████▏  | 328/460 [8:04:29<3:13:42, 88.05s/it] 72%|███████▏  | 329/460 [8:05:55<3:11:14, 87.59s/it] 72%|███████▏  | 330/460 [8:07:23<3:09:39, 87.54s/it] 72%|███████▏  | 331/460 [8:08:48<3:06:46, 86.87s/it] 72%|███████▏  | 332/460 [8:10:19<3:07:55, 88.09s/it] 72%|███████▏  | 333/460 [8:11:49<3:07:29, 88.58s/it] 73%|███████▎  | 334/460 [8:13:14<3:04:01, 87.63s/it] 73%|███████▎  | 335/460 [8:14:40<3:01:48, 87.27s/it] 73%|███████▎  | 336/460 [8:16:06<2:59:16, 86.74s/it] 73%|███████▎  | 337/460 [8:17:31<2:56:52, 86.28s/it] 73%|███████▎  | 338/460 [8:19:01<2:57:46, 87.43s/it] 74%|███████▎  | 339/460 [8:20:28<2:55:59, 87.27s/it] 74%|███████▍  | 340/460 [8:21:46<2:49:03, 84.53s/it][INFO|trainer.py:3115] 2023-10-30 02:22:34,224 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 02:22:34,224 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 02:22:34,224 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.24s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.446797251701355, 'eval_accuracy': 0.6341256708407871, 'eval_runtime': 46.2892, 'eval_samples_per_second': 17.283, 'eval_steps_per_second': 0.281, 'epoch': 7.25}
+ 74%|███████▍  | 340/460 [8:22:33<2:49:03, 84.53s/it]
+100%|██████████| 13/13 [00:42<00:00,  3.47s/it][A
+                                               [A 74%|███████▍  | 341/460 [8:23:58<3:15:33, 98.60s/it] 74%|███████▍  | 342/460 [8:25:22<3:05:41, 94.42s/it] 75%|███████▍  | 343/460 [8:26:56<3:03:20, 94.02s/it] 75%|███████▍  | 344/460 [8:28:26<2:59:40, 92.93s/it] 75%|███████▌  | 345/460 [8:29:45<2:50:22, 88.89s/it] 75%|███████▌  | 346/460 [8:31:11<2:47:09, 87.98s/it] 75%|███████▌  | 347/460 [8:32:40<2:46:07, 88.21s/it] 76%|███████▌  | 348/460 [8:34:04<2:42:15, 86.92s/it] 76%|███████▌  | 349/460 [8:35:25<2:37:24, 85.08s/it] 76%|███████▌  | 350/460 [8:36:48<2:35:12, 84.66s/it] 76%|███████▋  | 351/460 [8:38:12<2:33:18, 84.39s/it] 77%|███████▋  | 352/460 [8:39:39<2:33:11, 85.10s/it] 77%|███████▋  | 353/460 [8:41:03<2:30:59, 84.67s/it] 77%|███████▋  | 354/460 [8:42:31<2:31:29, 85.75s/it] 77%|███████▋  | 355/460 [8:43:57<2:30:33, 86.03s/it] 77%|███████▋  | 356/460 [8:45:26<2:30:18, 86.72s/it] 78%|███████▊  | 357/460 [8:46:54<2:29:23, 87.03s/it] 78%|███████▊  | 358/460 [8:48:16<2:25:22, 85.52s/it] 78%|███████▊  | 359/460 [8:49:47<2:26:48, 87.21s/it] 78%|███████▊  | 360/460 [8:51:17<2:26:59, 88.20s/it][INFO|trainer.py:3115] 2023-10-30 02:52:05,126 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 02:52:05,126 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 02:52:05,126 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.10s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.4460128843784332, 'eval_accuracy': 0.6341390876565295, 'eval_runtime': 45.262, 'eval_samples_per_second': 17.675, 'eval_steps_per_second': 0.287, 'epoch': 7.68}
+ 78%|███████▊  | 360/460 [8:52:03<2:26:59, 88.20s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 78%|███████▊  | 361/460 [8:53:31<2:47:52, 101.74s/it] 79%|███████▊  | 362/460 [8:54:54<2:37:00, 96.13s/it]  79%|███████▉  | 363/460 [8:56:22<2:31:30, 93.72s/it] 79%|███████▉  | 364/460 [8:57:43<2:24:07, 90.08s/it] 79%|███████▉  | 365/460 [8:59:13<2:22:37, 90.08s/it] 80%|███████▉  | 366/460 [9:00:39<2:19:12, 88.85s/it] 80%|███████▉  | 367/460 [9:02:02<2:15:03, 87.13s/it] 80%|████████  | 368/460 [9:03:29<2:13:29, 87.06s/it] 80%|████████  | 369/460 [9:04:58<2:12:41, 87.49s/it] 80%|████████  | 370/460 [9:06:25<2:11:16, 87.51s/it] 81%|████████  | 371/460 [9:07:53<2:09:41, 87.44s/it] 81%|████████  | 372/460 [9:09:16<2:06:17, 86.10s/it] 81%|████████  | 373/460 [9:10:50<2:08:36, 88.69s/it] 81%|████████▏ | 374/460 [9:12:19<2:07:13, 88.76s/it] 82%|████████▏ | 375/460 [9:13:42<2:03:16, 87.01s/it] 82%|████████▏ | 376/460 [9:15:09<2:01:32, 86.81s/it] 82%|████████▏ | 377/460 [9:16:39<2:01:33, 87.87s/it] 82%|████████▏ | 378/460 [9:18:09<2:01:10, 88.67s/it] 82%|████████▏ | 379/460 [9:19:37<1:59:22, 88.43s/it] 83%|████████▎ | 380/460 [9:21:02<1:56:34, 87.43s/it][INFO|trainer.py:3115] 2023-10-30 03:21:50,352 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 03:21:50,352 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 03:21:50,352 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.60s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.4488794207572937, 'eval_accuracy': 0.6339959749552773, 'eval_runtime': 45.2659, 'eval_samples_per_second': 17.673, 'eval_steps_per_second': 0.287, 'epoch': 8.11}
+ 83%|████████▎ | 380/460 [9:21:48<1:56:34, 87.43s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A 83%|████████▎ | 381/460 [9:23:13<2:12:15, 100.45s/it] 83%|████████▎ | 382/460 [9:24:43<2:06:27, 97.28s/it]  83%|████████▎ | 383/460 [9:26:10<2:00:51, 94.18s/it] 83%|████████▎ | 384/460 [9:27:36<1:56:08, 91.70s/it] 84%|████████▎ | 385/460 [9:29:02<1:52:29, 89.99s/it] 84%|████████▍ | 386/460 [9:30:28<1:49:30, 88.79s/it] 84%|████████▍ | 387/460 [9:31:53<1:46:27, 87.50s/it] 84%|████████▍ | 388/460 [9:33:16<1:43:29, 86.24s/it] 85%|████████▍ | 389/460 [9:34:44<1:42:53, 86.94s/it] 85%|████████▍ | 390/460 [9:36:09<1:40:46, 86.38s/it] 85%|████████▌ | 391/460 [9:37:29<1:37:00, 84.35s/it] 85%|████████▌ | 392/460 [9:39:00<1:37:54, 86.39s/it] 85%|████████▌ | 393/460 [9:40:27<1:36:41, 86.59s/it] 86%|████████▌ | 394/460 [9:41:53<1:34:52, 86.25s/it] 86%|████████▌ | 395/460 [9:43:14<1:31:47, 84.72s/it] 86%|████████▌ | 396/460 [9:44:37<1:29:50, 84.23s/it] 86%|████████▋ | 397/460 [9:45:58<1:27:17, 83.13s/it] 87%|████████▋ | 398/460 [9:47:25<1:27:19, 84.51s/it] 87%|████████▋ | 399/460 [9:48:47<1:24:59, 83.59s/it] 87%|████████▋ | 400/460 [9:50:10<1:23:30, 83.50s/it][INFO|trainer.py:3115] 2023-10-30 03:50:57,913 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 03:50:57,913 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 03:50:57,913 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.72s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.09s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.25s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.21s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.18s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.34s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.47s/it][A                                                     
+                                               [A{'eval_loss': 0.44861626625061035, 'eval_accuracy': 0.6340742397137746, 'eval_runtime': 45.2725, 'eval_samples_per_second': 17.671, 'eval_steps_per_second': 0.287, 'epoch': 8.53}
+ 87%|████████▋ | 400/460 [9:50:55<1:23:30, 83.50s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.47s/it][A
+                                               [A[INFO|trainer.py:2841] 2023-10-30 03:51:46,103 >> Saving model checkpoint to llama/checkpoint-400
+[INFO|tokenization_utils_base.py:2235] 2023-10-30 03:51:46,147 >> tokenizer config file saved in llama/checkpoint-400/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2242] 2023-10-30 03:51:46,147 >> Special tokens file saved in llama/checkpoint-400/special_tokens_map.json
+[2023-10-30 03:51:46,354] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step400 is about to be saved!
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+[2023-10-30 03:51:48,206] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: llama/checkpoint-400/global_step400/mp_rank_00_model_states.pt
+[2023-10-30 03:51:48,206] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-400/global_step400/mp_rank_00_model_states.pt...
+[2023-10-30 03:51:55,415] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-400/global_step400/mp_rank_00_model_states.pt.
+[2023-10-30 03:51:55,443] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-400/global_step400/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt...
+[2023-10-30 03:51:55,586] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-400/global_step400/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt.
+[2023-10-30 03:51:55,587] [INFO] [engine.py:3375:_save_zero_checkpoint] zero checkpoint saved llama/checkpoint-400/global_step400/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt
+[2023-10-30 03:51:55,587] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step400 is ready now!
++++++++++++++++++save call back++++++++++++++++
+ 87%|████████▋ | 401/460 [9:52:41<1:42:03, 103.79s/it] 87%|████████▋ | 402/460 [9:54:08<1:35:20, 98.62s/it]  88%|████████▊ | 403/460 [9:55:29<1:28:43, 93.40s/it] 88%|████████▊ | 404/460 [9:56:55<1:25:08, 91.23s/it] 88%|████████▊ | 405/460 [9:58:24<1:23:03, 90.61s/it] 88%|████████▊ | 406/460 [9:59:48<1:19:46, 88.64s/it] 88%|████████▊ | 407/460 [10:01:17<1:18:22, 88.72s/it] 89%|████████▊ | 408/460 [10:02:44<1:16:30, 88.27s/it] 89%|████████▉ | 409/460 [10:04:18<1:16:28, 89.97s/it] 89%|████████▉ | 410/460 [10:05:45<1:14:09, 89.00s/it] 89%|████████▉ | 411/460 [10:07:09<1:11:24, 87.44s/it] 90%|████████▉ | 412/460 [10:08:33<1:09:09, 86.45s/it] 90%|████████▉ | 413/460 [10:10:01<1:08:01, 86.83s/it] 90%|█████████ | 414/460 [10:11:29<1:06:57, 87.33s/it] 90%|█████████ | 415/460 [10:12:56<1:05:22, 87.16s/it] 90%|█████████ | 416/460 [10:14:22<1:03:33, 86.68s/it] 91%|█████████ | 417/460 [10:15:46<1:01:33, 85.89s/it] 91%|█████████ | 418/460 [10:17:17<1:01:10, 87.39s/it] 91%|█████████ | 419/460 [10:18:42<59:16, 86.75s/it]   91%|█████████▏| 420/460 [10:20:12<58:37, 87.94s/it][INFO|trainer.py:3115] 2023-10-30 04:21:00,385 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 04:21:00,385 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 04:21:00,385 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.23s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.73s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.84s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.12s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.11s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.26s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.22s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.20s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.36s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.41s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.48s/it][A                                                    
+                                               [A{'eval_loss': 0.4478224515914917, 'eval_accuracy': 0.6341681574239714, 'eval_runtime': 45.4943, 'eval_samples_per_second': 17.585, 'eval_steps_per_second': 0.286, 'epoch': 8.96}
+ 91%|█████████▏| 420/460 [10:20:58<58:37, 87.94s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.48s/it][A
+                                               [A 92%|█████████▏| 421/460 [10:22:29<1:06:33, 102.41s/it] 92%|█████████▏| 422/460 [10:23:51<1:01:03, 96.40s/it]  92%|█████████▏| 423/460 [10:25:22<58:26, 94.78s/it]   92%|█████████▏| 424/460 [10:26:46<54:52, 91.46s/it] 92%|█████████▏| 425/460 [10:28:19<53:37, 91.93s/it] 93%|█████████▎| 426/460 [10:29:46<51:14, 90.41s/it] 93%|█████████▎| 427/460 [10:31:16<49:45, 90.47s/it] 93%|█████████▎| 428/460 [10:32:43<47:40, 89.39s/it] 93%|█████████▎| 429/460 [10:34:04<44:53, 86.88s/it] 93%|█████████▎| 430/460 [10:35:34<43:56, 87.88s/it] 94%|█████████▎| 431/460 [10:36:55<41:26, 85.74s/it] 94%|█████████▍| 432/460 [10:38:17<39:30, 84.67s/it] 94%|█████████▍| 433/460 [10:39:47<38:47, 86.19s/it] 94%|█████████▍| 434/460 [10:41:14<37:27, 86.45s/it] 95%|█████████▍| 435/460 [10:42:40<35:58, 86.33s/it] 95%|█████████▍| 436/460 [10:44:16<35:41, 89.25s/it] 95%|█████████▌| 437/460 [10:45:44<34:01, 88.78s/it] 95%|█████████▌| 438/460 [10:47:10<32:16, 88.02s/it] 95%|█████████▌| 439/460 [10:48:33<30:16, 86.49s/it] 96%|█████████▌| 440/460 [10:49:58<28:39, 85.98s/it][INFO|trainer.py:3115] 2023-10-30 04:50:45,710 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 04:50:45,710 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 04:50:45,710 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.23s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.73s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.84s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.12s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.26s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.22s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.19s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.35s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.41s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.48s/it][A                                                    
+                                               [A{'eval_loss': 0.4517552852630615, 'eval_accuracy': 0.6338595706618962, 'eval_runtime': 46.4723, 'eval_samples_per_second': 17.215, 'eval_steps_per_second': 0.28, 'epoch': 9.39}
+ 96%|█████████▌| 440/460 [10:50:44<28:39, 85.98s/it]
+100%|██████████| 13/13 [00:42<00:00,  3.48s/it][A
+                                               [A 96%|█████████▌| 441/460 [10:52:12<31:48, 100.42s/it] 96%|█████████▌| 442/460 [10:53:35<28:34, 95.27s/it]  96%|█████████▋| 443/460 [10:55:02<26:17, 92.81s/it] 97%|█████████▋| 444/460 [10:56:26<23:59, 89.98s/it] 97%|█████████▋| 445/460 [10:57:57<22:34, 90.33s/it] 97%|█████████▋| 446/460 [10:59:21<20:41, 88.64s/it] 97%|█████████▋| 447/460 [11:00:48<19:02, 87.87s/it] 97%|█████████▋| 448/460 [11:02:12<17:22, 86.90s/it] 98%|█████████▊| 449/460 [11:03:38<15:50, 86.44s/it] 98%|█████████▊| 450/460 [11:05:04<14:23, 86.31s/it] 98%|█████████▊| 451/460 [11:06:36<13:12, 88.05s/it] 98%|█████████▊| 452/460 [11:07:59<11:32, 86.62s/it] 98%|█████████▊| 453/460 [11:09:29<10:13, 87.68s/it] 99%|█████████▊| 454/460 [11:10:56<08:44, 87.40s/it] 99%|█████████▉| 455/460 [11:12:19<07:10, 86.17s/it] 99%|█████████▉| 456/460 [11:13:53<05:53, 88.39s/it] 99%|█████████▉| 457/460 [11:15:16<04:20, 86.72s/it]100%|█████████▉| 458/460 [11:16:45<02:55, 87.63s/it]100%|█████████▉| 459/460 [11:18:20<01:29, 89.82s/it]100%|██████████| 460/460 [11:19:45<00:00, 88.28s/it][INFO|trainer.py:3115] 2023-10-30 05:20:32,821 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 05:20:32,821 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 05:20:32,821 >>   Batch size = 32
+
+  0%|          | 0/13 [00:00<?, ?it/s][A
+ 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it][A
+ 23%|██▎       | 3/13 [00:06<00:22,  2.23s/it][A
+ 31%|███       | 4/13 [00:09<00:24,  2.73s/it][A
+ 38%|███▊      | 5/13 [00:12<00:22,  2.84s/it][A
+ 46%|████▌     | 6/13 [00:16<00:21,  3.12s/it][A
+ 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it][A
+ 62%|██████▏   | 8/13 [00:23<00:16,  3.26s/it][A
+ 69%|██████▉   | 9/13 [00:26<00:12,  3.22s/it][A
+ 77%|███████▋  | 10/13 [00:29<00:09,  3.19s/it][A
+ 85%|████████▍ | 11/13 [00:33<00:06,  3.35s/it][A
+ 92%|█████████▏| 12/13 [00:36<00:03,  3.41s/it][A
+100%|██████████| 13/13 [00:40<00:00,  3.48s/it][A                                                    
+                                               [A{'eval_loss': 0.45161187648773193, 'eval_accuracy': 0.633884168157424, 'eval_runtime': 45.4459, 'eval_samples_per_second': 17.603, 'eval_steps_per_second': 0.286, 'epoch': 9.81}
+100%|██████████| 460/460 [11:20:30<00:00, 88.28s/it]
+100%|██████████| 13/13 [00:41<00:00,  3.48s/it][A
+                                               [A[INFO|trainer.py:1960] 2023-10-30 05:21:18,269 >> 
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+                                                    {'train_runtime': 40830.8892, 'train_samples_per_second': 5.878, 'train_steps_per_second': 0.011, 'train_loss': 0.4424552254054857, 'epoch': 9.81}
+100%|██████████| 460/460 [11:20:31<00:00, 88.28s/it]100%|██████████| 460/460 [11:20:31<00:00, 88.77s/it]
+[INFO|trainer.py:2841] 2023-10-30 05:21:21,150 >> Saving model checkpoint to llama
+[INFO|tokenization_utils_base.py:2235] 2023-10-30 05:21:21,194 >> tokenizer config file saved in llama/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2242] 2023-10-30 05:21:21,194 >> Special tokens file saved in llama/special_tokens_map.json
+***** train metrics *****
+  epoch                    =        9.81
+  train_loss               =      0.4425
+  train_runtime            = 11:20:30.88
+  train_samples            =       24000
+  train_samples_per_second =       5.878
+  train_steps_per_second   =       0.011
+10/30/2023 05:21:21 - INFO - __main__ - *** Evaluate ***
+[INFO|trainer.py:3115] 2023-10-30 05:21:21,394 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-30 05:21:21,394 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-30 05:21:21,394 >>   Batch size = 32
+  0%|          | 0/13 [00:00<?, ?it/s] 15%|█▌        | 2/13 [00:03<00:17,  1.61s/it] 23%|██▎       | 3/13 [00:06<00:22,  2.22s/it] 31%|███       | 4/13 [00:09<00:24,  2.72s/it] 38%|███▊      | 5/13 [00:12<00:22,  2.83s/it] 46%|████▌     | 6/13 [00:16<00:21,  3.11s/it] 54%|█████▍    | 7/13 [00:19<00:18,  3.10s/it] 62%|██████▏   | 8/13 [00:23<00:16,  3.26s/it] 69%|██████▉   | 9/13 [00:26<00:12,  3.22s/it] 77%|███████▋  | 10/13 [00:29<00:09,  3.19s/it] 85%|████████▍ | 11/13 [00:33<00:06,  3.35s/it] 92%|█████████▏| 12/13 [00:36<00:03,  3.40s/it]100%|██████████| 13/13 [00:40<00:00,  3.47s/it][2023-10-30 05:22:07,754] [INFO] [launch.py:347:main] Process 2099387 exits successfully.
+100%|██████████| 13/13 [00:42<00:00,  3.29s/it]
+***** eval metrics *****
+  epoch                   =       9.81
+  eval_accuracy           =     0.6339
+  eval_loss               =     0.4516
+  eval_runtime            = 0:00:46.43
+  eval_samples            =        800
+  eval_samples_per_second =     17.229
+  eval_steps_per_second   =       0.28
+  perplexity              =     1.5708
+[2023-10-30 05:22:08,756] [INFO] [launch.py:347:main] Process 2099386 exits successfully.

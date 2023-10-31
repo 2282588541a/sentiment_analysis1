@@ -1,0 +1,1006 @@
+[2023-10-29 13:50:27,573] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 13:50:28,972] [WARNING] [runner.py:203:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2023-10-29 13:50:28,972] [INFO] [runner.py:570:main] cmd = /data/zhangxiaoming/miniconda3/envs/env/bin/python3.9 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMiwgM119 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None finetune_clm.py --model_name_or_path /datas/huggingface/Llama-2-7b-hf --train_files /data/zhangxiaoming/personal/sentiment_analysis/train1.csv --validation_files /data/zhangxiaoming/personal/sentiment_analysis/dev1.csv --per_device_train_batch_size 1 --per_device_eval_batch_size 1 --do_train --do_eval --use_fast_tokenizer false --output_dir llama --evaluation_strategy steps --max_eval_samples 800 --learning_rate 1e-4 --gradient_accumulation_steps 8 --num_train_epochs 10 --warmup_steps 400 --logging_dir llama/logs --logging_strategy steps --logging_steps 10 --save_strategy steps --preprocessing_num_workers 10 --save_steps 20 --eval_steps 20 --save_total_limit 2000 --seed 42 --disable_tqdm false --ddp_find_unused_parameters false --block_size 2048 --report_to tensorboard --overwrite_output_dir --deepspeed ds_config_zero2.json --ignore_data_skip true --bf16 --gradient_checkpointing --bf16_full_eval --ddp_timeout 18000000
+[2023-10-29 13:50:30,512] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 13:50:31,844] [INFO] [launch.py:145:main] WORLD INFO DICT: {'localhost': [2, 3]}
+[2023-10-29 13:50:31,844] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=2, node_rank=0
+[2023-10-29 13:50:31,844] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1]})
+[2023-10-29 13:50:31,844] [INFO] [launch.py:163:main] dist_world_size=2
+[2023-10-29 13:50:31,844] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=2,3
+[2023-10-29 13:50:33,394] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 13:50:33,404] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-10-29 13:50:35,223] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-10-29 13:50:35,223] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2023-10-29 13:50:35,250] [INFO] [comm.py:637:init_distributed] cdb=None
+10/29/2023 13:52:45 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+10/29/2023 13:52:45 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=True,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=False,
+ddp_timeout=18000000,
+debug=[],
+deepspeed=ds_config_zero2.json,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=20,
+evaluation_strategy=steps,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=8,
+gradient_checkpointing=True,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=True,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0001,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=llama/logs,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=10,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=10.0,
+optim=adamw_torch,
+optim_args=None,
+output_dir=llama,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=1,
+per_device_train_batch_size=1,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['tensorboard'],
+resume_from_checkpoint=None,
+run_name=llama,
+save_on_each_node=False,
+save_safetensors=False,
+save_steps=20,
+save_strategy=steps,
+save_total_limit=2000,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=400,
+weight_decay=0.0,
+)
+10/29/2023 13:52:45 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: False
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/load.py:2089: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=None' instead.
+  warnings.warn(
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/load.py:2089: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=None' instead.
+  warnings.warn(
+Using custom data configuration default-44b7c1e1406106aa
+10/29/2023 13:52:46 - INFO - datasets.builder - Using custom data configuration default-44b7c1e1406106aa
+Loading Dataset Infos from /data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/packaged_modules/csv
+10/29/2023 13:52:46 - INFO - datasets.info - Loading Dataset Infos from /data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/datasets/packaged_modules/csv
+Generating dataset csv (/data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d)
+10/29/2023 13:52:46 - INFO - datasets.builder - Generating dataset csv (/data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d)
+Downloading and preparing dataset csv/default to /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d...
+10/29/2023 13:52:46 - INFO - datasets.builder - Downloading and preparing dataset csv/default to /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d...
+Downloading data files:   0%|          | 0/2 [00:00<?, ?it/s]Downloading data files: 100%|██████████| 2/2 [00:00<00:00, 16946.68it/s]
+Downloading took 0.0 min
+10/29/2023 13:52:46 - INFO - datasets.download.download_manager - Downloading took 0.0 min
+Checksum Computation took 0.0 min
+10/29/2023 13:52:46 - INFO - datasets.download.download_manager - Checksum Computation took 0.0 min
+Extracting data files:   0%|          | 0/2 [00:00<?, ?it/s]Extracting data files: 100%|██████████| 2/2 [00:00<00:00, 1856.30it/s]
+Generating train split
+10/29/2023 13:52:46 - INFO - datasets.builder - Generating train split
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 10000 examples [00:00, 46709.51 examples/s]Generating train split: 24000 examples [00:00, 76012.52 examples/s]Generating train split: 24000 examples [00:00, 70433.22 examples/s]
+Generating validation split
+10/29/2023 13:52:47 - INFO - datasets.builder - Generating validation split
+Generating validation split: 0 examples [00:00, ? examples/s]Generating validation split: 1000 examples [00:00, 74353.91 examples/s]
+Unable to verify splits sizes.
+10/29/2023 13:52:47 - INFO - datasets.utils.info_utils - Unable to verify splits sizes.
+Dataset csv downloaded and prepared to /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d. Subsequent calls will reuse this data.
+10/29/2023 13:52:47 - INFO - datasets.builder - Dataset csv downloaded and prepared to /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d. Subsequent calls will reuse this data.
+[INFO|configuration_utils.py:713] 2023-10-29 13:52:47,211 >> loading configuration file /datas/huggingface/Llama-2-7b-hf/config.json
+[INFO|configuration_utils.py:775] 2023-10-29 13:52:47,212 >> Model config LlamaConfig {
+  "_name_or_path": "/datas/huggingface/Llama-2-7b-hf",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 11008,
+  "max_position_embeddings": 4096,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 32,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 10000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float16",
+  "transformers_version": "4.33.2",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 13:52:47,213 >> loading file tokenizer.model
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 13:52:47,213 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 13:52:47,213 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:1850] 2023-10-29 13:52:47,213 >> loading file tokenizer_config.json
+None
+[INFO|modeling_utils.py:2866] 2023-10-29 13:52:47,234 >> loading weights file /datas/huggingface/Llama-2-7b-hf/model.safetensors.index.json
+[INFO|modeling_utils.py:1200] 2023-10-29 13:52:47,234 >> Instantiating LlamaForCausalLM model under default dtype torch.float16.
+[INFO|configuration_utils.py:768] 2023-10-29 13:52:47,235 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "transformers_version": "4.33.2"
+}
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]None
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:11<00:11, 11.20s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:11<00:11, 11.10s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:16<00:00,  7.55s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:16<00:00,  8.10s/it]
+[INFO|modeling_utils.py:3655] 2023-10-29 13:53:03,530 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
+
+[INFO|modeling_utils.py:3663] 2023-10-29 13:53:03,530 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at /datas/huggingface/Llama-2-7b-hf.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
+[INFO|configuration_utils.py:728] 2023-10-29 13:53:03,532 >> loading configuration file /datas/huggingface/Llama-2-7b-hf/generation_config.json
+[INFO|configuration_utils.py:768] 2023-10-29 13:53:03,533 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "do_sample": true,
+  "eos_token_id": 2,
+  "max_length": 4096,
+  "pad_token_id": 0,
+  "temperature": 0.6,
+  "top_p": 0.9,
+  "transformers_version": "4.33.2"
+}
+
+Loading checkpoint shards: 100%|██████████| 2/2 [00:16<00:00,  7.50s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:16<00:00,  8.04s/it]
+train_on_inputs True
+train_on_inputs True
+Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00000_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00000_of_00010.arrow
+Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00001_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00001_of_00010.arrow
+Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00002_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00002_of_00010.arrow
+Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00003_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00003_of_00010.arrow
+Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00004_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00004_of_00010.arrow
+Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00005_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00005_of_00010.arrow
+Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00006_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00006_of_00010.arrow
+Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00007_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00007_of_00010.arrow
+Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00008_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00008_of_00010.arrow
+Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00009_of_00010.arrow
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00009_of_00010.arrow
+Spawning 10 processes
+10/29/2023 13:53:03 - INFO - datasets.arrow_dataset - Spawning 10 processes
+Running tokenizer on dataset (num_proc=10):   0%|          | 0/24000 [00:00<?, ? examples/s]Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00000_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00000_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00003_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00003_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00004_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00004_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00001_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00001_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00002_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00002_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00005_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00005_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00008_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00008_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00009_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00009_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00006_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00006_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00007_of_00010.arrow
+10/29/2023 13:53:04 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-3c28e1e13251b229_00007_of_00010.arrow
+Running tokenizer on dataset (num_proc=10):   4%|▍         | 1000/24000 [00:00<00:18, 1217.61 examples/s]Running tokenizer on dataset (num_proc=10):  46%|████▌     | 11000/24000 [00:01<00:01, 8642.42 examples/s]Running tokenizer on dataset (num_proc=10):  75%|███████▌  | 18000/24000 [00:01<00:00, 14902.72 examples/s]Running tokenizer on dataset (num_proc=10):  90%|█████████ | 21600/24000 [00:01<00:00, 15410.55 examples/s]Running tokenizer on dataset (num_proc=10): 100%|██████████| 24000/24000 [00:02<00:00, 11515.59 examples/s]
+Concatenating 10 shards
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Concatenating 10 shards
+Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00000_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #0 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00000_of_00010.arrow
+Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00001_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #1 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00001_of_00010.arrow
+Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00002_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #2 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00002_of_00010.arrow
+Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00003_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #3 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00003_of_00010.arrow
+Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00004_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #4 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00004_of_00010.arrow
+Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00005_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #5 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00005_of_00010.arrow
+Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00006_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #6 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00006_of_00010.arrow
+Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00007_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #7 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00007_of_00010.arrow
+Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00008_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #8 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00008_of_00010.arrow
+Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00009_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Process #9 will write at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00009_of_00010.arrow
+Spawning 10 processes
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Spawning 10 processes
+Running tokenizer on dataset (num_proc=10):   0%|          | 0/1000 [00:00<?, ? examples/s]Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00000_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00000_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00001_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00001_of_00010.arrow
+Running tokenizer on dataset (num_proc=10):  10%|█         | 100/1000 [00:00<00:01, 521.21 examples/s]Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00002_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00002_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00003_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00003_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00004_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00004_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00005_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00005_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00006_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00006_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00007_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00007_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00008_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00008_of_00010.arrow
+Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00009_of_00010.arrow
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Caching processed dataset at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-c849d22d25b307d5_00009_of_00010.arrow
+Running tokenizer on dataset (num_proc=10): 100%|██████████| 1000/1000 [00:00<00:00, 2603.25 examples/s]
+Concatenating 10 shards
+10/29/2023 13:53:06 - INFO - datasets.arrow_dataset - Concatenating 10 shards
+10/29/2023 13:53:07 - INFO - __main__ - Sample 20952 of the training set: {'input_ids': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 31640, 29871, 236, 157, 193, 232, 136, 144, 30437, 29871, 31522, 30780, 29871, 30847, 30801, 29871, 30413, 29871, 30815, 29871, 232, 167, 189, 29871, 30659, 29871, 31506, 234, 139, 188, 29871, 31506, 232, 169, 139, 29871, 31751, 29871, 30847, 31502, 29871, 31656, 30910, 29871, 31410, 30767, 29871, 30847, 31502, 29871, 31331, 29871, 234, 139, 185, 31506, 30574, 231, 189, 181, 29871, 31398, 232, 193, 136, 16088, 30098, 29871, 235, 184, 184, 29871, 236, 165, 153, 233, 136, 170, 29871, 30651, 30658, 29871, 232, 180, 141, 29871, 30769, 29871, 231, 187, 165, 29871, 30659, 234, 140, 143, 29871, 234, 139, 185, 31763, 29871, 30953, 29871, 31407, 29871, 232, 173, 149, 30988, 29871, 233, 147, 161, 29871, 233, 131, 152, 29871, 30744, 30651, 29871, 30810, 30742, 29871, 232, 160, 157, 232, 137, 182, 29871, 233, 142, 149, 234, 190, 160, 29871, 31410, 30767, 29871, 30805, 29871, 30613, 30755, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 379, 403, 29892, 2744, 29916, 21549, 29892, 9928, 261, 13, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 31640, 29871, 236, 157, 193, 232, 136, 144, 30437, 29871, 31522, 30780, 29871, 30847, 30801, 29871, 30413, 29871, 30815, 29871, 232, 167, 189, 29871, 30659, 29871, 31506, 234, 139, 188, 29871, 31506, 232, 169, 139, 29871, 31751, 29871, 30847, 31502, 29871, 31656, 30910, 29871, 31410, 30767, 29871, 30847, 31502, 29871, 31331, 29871, 234, 139, 185, 31506, 30574, 231, 189, 181, 29871, 31398, 232, 193, 136, 16088, 30098, 29871, 235, 184, 184, 29871, 236, 165, 153, 233, 136, 170, 29871, 30651, 30658, 29871, 232, 180, 141, 29871, 30769, 29871, 231, 187, 165, 29871, 30659, 234, 140, 143, 29871, 234, 139, 185, 31763, 29871, 30953, 29871, 31407, 29871, 232, 173, 149, 30988, 29871, 233, 147, 161, 29871, 233, 131, 152, 29871, 30744, 30651, 29871, 30810, 30742, 29871, 232, 160, 157, 232, 137, 182, 29871, 233, 142, 149, 234, 190, 160, 29871, 31410, 30767, 29871, 30805, 29871, 30613, 30755, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 379, 403, 29892, 2744, 29916, 21549, 29892, 9928, 261, 13, 2]}.
+10/29/2023 13:53:07 - INFO - __main__ - Sample 3648 of the training set: {'input_ids': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30413, 31138, 29871, 31984, 31985, 29871, 30457, 29871, 30470, 29871, 31221, 29871, 31594, 30805, 29871, 31423, 29871, 31658, 29871, 31138, 29871, 30470, 236, 193, 135, 29871, 235, 132, 143, 31729, 29871, 232, 172, 157, 31191, 29871, 31184, 29871, 30810, 31819, 29871, 30287, 235, 139, 175, 29871, 30952, 235, 183, 171, 29871, 31658, 31596, 29871, 31608, 29871, 30953, 29871, 31423, 29871, 30698, 31376, 29871, 31138, 29871, 31568, 236, 165, 148, 29871, 234, 136, 170, 31122, 29871, 235, 170, 132, 30806, 29871, 31184, 29871, 30810, 31893, 29871, 30594, 30557, 29871, 31151, 30448, 29871, 31222, 234, 190, 159, 29871, 232, 144, 138, 234, 189, 170, 30845, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 6298, 7734, 13, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30413, 31138, 29871, 31984, 31985, 29871, 30457, 29871, 30470, 29871, 31221, 29871, 31594, 30805, 29871, 31423, 29871, 31658, 29871, 31138, 29871, 30470, 236, 193, 135, 29871, 235, 132, 143, 31729, 29871, 232, 172, 157, 31191, 29871, 31184, 29871, 30810, 31819, 29871, 30287, 235, 139, 175, 29871, 30952, 235, 183, 171, 29871, 31658, 31596, 29871, 31608, 29871, 30953, 29871, 31423, 29871, 30698, 31376, 29871, 31138, 29871, 31568, 236, 165, 148, 29871, 234, 136, 170, 31122, 29871, 235, 170, 132, 30806, 29871, 31184, 29871, 30810, 31893, 29871, 30594, 30557, 29871, 31151, 30448, 29871, 31222, 234, 190, 159, 29871, 232, 144, 138, 234, 189, 170, 30845, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 6298, 7734, 13, 2]}.
+10/29/2023 13:53:07 - INFO - __main__ - Sample 819 of the training set: {'input_ids': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30672, 31522, 29871, 31066, 232, 172, 137, 29871, 30948, 30594, 29871, 31811, 29871, 234, 136, 170, 31122, 29871, 31356, 31893, 29871, 233, 135, 162, 235, 170, 140, 29871, 31370, 31751, 29871, 232, 187, 169, 29871, 234, 160, 131, 29871, 233, 186, 164, 233, 186, 164, 30210, 29871, 233, 134, 137, 233, 131, 136, 29871, 30503, 29871, 231, 191, 167, 233, 135, 162, 29871, 31238, 29871, 31551, 30672, 29871, 31424, 30505, 29871, 233, 165, 169, 29871, 31066, 232, 172, 137, 29871, 233, 135, 162, 235, 170, 140, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 17784, 798, 29892, 2744, 29916, 21549, 13, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': [1, 1, 29950, 7889, 29901, 29871, 30993, 234, 190, 173, 30333, 30346, 30748, 30832, 31450, 31358, 30383, 30998, 30287, 31559, 31505, 232, 146, 168, 31174, 30448, 30748, 30832, 30214, 30287, 31559, 31505, 232, 146, 168, 30682, 30651, 31360, 30909, 30923, 30502, 30748, 30832, 30214, 31611, 30748, 30573, 30651, 30557, 31044, 30502, 30748, 30832, 8155, 29892, 10844, 29891, 29892, 2744, 29916, 21549, 29892, 29903, 22396, 29892, 1252, 1103, 29892, 29950, 403, 29892, 18498, 7734, 29892, 9928, 261, 13, 13, 30557, 30806, 30392, 30287, 31959, 235, 143, 134, 31507, 29901, 13, 13, 30952, 30815, 31419, 29871, 31024, 31050, 29871, 30923, 31893, 29871, 31851, 31787, 29871, 31076, 235, 178, 135, 1599, 8155, 13, 30622, 30287, 29871, 234, 159, 191, 29871, 31238, 29871, 31811, 30544, 29871, 30810, 29871, 232, 139, 157, 29871, 30429, 30461, 29871, 31143, 30670, 29871, 31121, 31141, 29871, 235, 149, 156, 29871, 235, 194, 173, 29871, 233, 175, 170, 813, 29871, 235, 138, 183, 235, 134, 159, 29871, 31522, 29871, 30413, 29871, 31195, 29871, 235, 192, 169, 29871, 31419, 29871, 31222, 30429, 29871, 234, 136, 170, 31122, 29871, 30503, 29871, 31679, 31568, 29871, 30755, 29871, 31566, 31785, 29871, 31100, 30666, 29871, 235, 178, 180, 30313, 1599, 8155, 29892, 18498, 7734, 13, 13, 31088, 30783, 30557, 235, 194, 179, 235, 178, 135, 235, 177, 189, 31174, 30448, 30748, 30832, 30267, 31557, 31086, 30742, 30748, 30832, 31320, 30801, 30214, 30923, 30502, 30748, 30832, 30406, 236, 131, 154, 30850, 236, 157, 151, 31026, 30214, 31352, 31383, 31149, 232, 177, 134, 31639, 30592, 30503, 31201, 236, 138, 141, 30267, 13, 13, 30672, 31522, 29871, 31066, 232, 172, 137, 29871, 30948, 30594, 29871, 31811, 29871, 234, 136, 170, 31122, 29871, 31356, 31893, 29871, 233, 135, 162, 235, 170, 140, 29871, 31370, 31751, 29871, 232, 187, 169, 29871, 234, 160, 131, 29871, 233, 186, 164, 233, 186, 164, 30210, 29871, 233, 134, 137, 233, 131, 136, 29871, 30503, 29871, 231, 191, 167, 233, 135, 162, 29871, 31238, 29871, 31551, 30672, 29871, 31424, 30505, 29871, 233, 165, 169, 29871, 31066, 232, 172, 137, 29871, 233, 135, 162, 235, 170, 140, 1599, 13, 13, 2, 1, 7900, 22137, 29901, 17784, 798, 29892, 2744, 29916, 21549, 13, 2]}.
+Caching indices mapping at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-97be1372215b2022.arrow
+10/29/2023 13:53:07 - INFO - datasets.arrow_dataset - Caching indices mapping at /data/zhangxiaoming/Llama2-Chinese-main/train/sft/llama/dataset_cache/csv/default-44b7c1e1406106aa/0.0.0/eea64c71ca8b46dd3f537ed218fc9bf495d5707789152eb2764f5c78fa66d59d/cache-97be1372215b2022.arrow
+0 start train
+1 start train
+[2023-10-29 13:53:07,190] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
+[2023-10-29 13:53:07,368] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[93m [WARNING] [0m cpu_adam cuda is missing or is incompatible with installed torch, only cpu ops can be compiled!
+Using /data/zhangxiaoming/.cache/torch_extensions/py39_cu117 as PyTorch extensions root...
+[93m [WARNING] [0m cpu_adam cuda is missing or is incompatible with installed torch, only cpu ops can be compiled!Using /data/zhangxiaoming/.cache/torch_extensions/py39_cu117 as PyTorch extensions root...
+
+Emitting ninja build file /data/zhangxiaoming/.cache/torch_extensions/py39_cu117/cpu_adam/build.ninja...
+Building extension module cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.0756306648254395 seconds
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000100, betas=(0.900000, 0.999000), weight_decay=0.000000, adam_w=1
+[2023-10-29 13:53:12,283] [INFO] [logging.py:96:log_dist] [Rank 0] Using DeepSpeed Optimizer param name adamw as basic optimizer
+[2023-10-29 13:53:12,311] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2023-10-29 13:53:12,311] [INFO] [utils.py:54:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2023-10-29 13:53:12,312] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.bfloat16 ZeRO stage 2 optimizer
+[2023-10-29 13:53:12,312] [INFO] [stage_1_and_2.py:146:__init__] Reduce bucket size 500000000
+[2023-10-29 13:53:12,312] [INFO] [stage_1_and_2.py:147:__init__] Allgather bucket size 500000000
+[2023-10-29 13:53:12,312] [INFO] [stage_1_and_2.py:148:__init__] CPU Offload: True
+[2023-10-29 13:53:12,312] [INFO] [stage_1_and_2.py:149:__init__] Round robin gradient partitioning: False
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.136627435684204 seconds
+Rank: 0 partition count [2] and sizes[(3369207808, False)] 
+Rank: 1 partition count [2] and sizes[(3369207808, False)] 
+[2023-10-29 13:53:29,519] [INFO] [utils.py:803:see_memory_usage] Before initializing optimizer states
+[2023-10-29 13:53:29,520] [INFO] [utils.py:804:see_memory_usage] MA 12.86 GB         Max_MA 12.86 GB         CA 12.86 GB         Max_CA 13 GB 
+[2023-10-29 13:53:29,520] [INFO] [utils.py:811:see_memory_usage] CPU Virtual Memory:  used = 77.03 GB, percent = 10.2%
+[2023-10-29 13:53:41,150] [INFO] [utils.py:803:see_memory_usage] After initializing optimizer states
+[2023-10-29 13:53:41,150] [INFO] [utils.py:804:see_memory_usage] MA 12.86 GB         Max_MA 12.86 GB         CA 12.86 GB         Max_CA 13 GB 
+[2023-10-29 13:53:41,151] [INFO] [utils.py:811:see_memory_usage] CPU Virtual Memory:  used = 161.38 GB, percent = 21.4%
+[2023-10-29 13:53:41,151] [INFO] [stage_1_and_2.py:520:__init__] optimizer state initialized
+[2023-10-29 13:53:41,225] [INFO] [utils.py:803:see_memory_usage] After initializing ZeRO optimizer
+[2023-10-29 13:53:41,226] [INFO] [utils.py:804:see_memory_usage] MA 12.86 GB         Max_MA 12.86 GB         CA 12.86 GB         Max_CA 13 GB 
+[2023-10-29 13:53:41,226] [INFO] [utils.py:811:see_memory_usage] CPU Virtual Memory:  used = 160.75 GB, percent = 21.3%
+[2023-10-29 13:53:41,230] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = adamw
+[2023-10-29 13:53:41,230] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupDecayLR
+[2023-10-29 13:53:41,230] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupDecayLR object at 0x7f92741f12e0>
+[2023-10-29 13:53:41,230] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0001], mom=[[0.9, 0.999]]
+[2023-10-29 13:53:41,231] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
+[2023-10-29 13:53:41,231] [INFO] [config.py:971:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-10-29 13:53:41,231] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-10-29 13:53:41,231] [INFO] [config.py:971:print]   amp_enabled .................. False
+[2023-10-29 13:53:41,231] [INFO] [config.py:971:print]   amp_params ................... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   bfloat16_enabled ............. True
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f92741c9d30>
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   communication_data_type ...... None
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   disable_allgather ............ False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   dump_state ................... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... None
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   elasticity_enabled ........... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   fp16_auto_cast ............... None
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   fp16_enabled ................. False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   global_rank .................. 0
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 8
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   gradient_clipping ............ 1.0
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 1
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   loss_scale ................... 1.0
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   memory_breakdown ............. False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   mics_shard_size .............. -1
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   optimizer_name ............... adamw
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   optimizer_params ............. {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.0}
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   pld_enabled .................. False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   pld_params ................... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   prescale_gradients ........... False
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   scheduler_name ............... WarmupDecayLR
+[2023-10-29 13:53:41,232] [INFO] [config.py:971:print]   scheduler_params ............. {'last_batch_iteration': -1, 'total_num_steps': 15000, 'warmup_min_lr': 0, 'warmup_max_lr': 0.0001, 'warmup_num_steps': 400}
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   sparse_attention ............. None
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   steps_per_print .............. inf
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   train_batch_size ............. 16
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   use_node_local_storage ....... False
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   weight_quantization_config ... None
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   world_size ................... 2
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  False
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   zero_config .................. stage=2 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='cpu', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=True) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=True, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   zero_enabled ................. True
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
+[2023-10-29 13:53:41,233] [INFO] [config.py:971:print]   zero_optimization_stage ...... 2
+[2023-10-29 13:53:41,233] [INFO] [config.py:957:print_user_config]   json = {
+    "fp16": {
+        "enabled": false, 
+        "loss_scale": 0, 
+        "loss_scale_window": 1000, 
+        "initial_scale_power": 16, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1
+    }, 
+    "optimizer": {
+        "type": "AdamW", 
+        "params": {
+            "lr": 0.0001, 
+            "betas": [0.9, 0.999], 
+            "eps": 1e-08, 
+            "weight_decay": 0.0
+        }
+    }, 
+    "scheduler": {
+        "type": "WarmupDecayLR", 
+        "params": {
+            "last_batch_iteration": -1, 
+            "total_num_steps": 1.500000e+04, 
+            "warmup_min_lr": 0, 
+            "warmup_max_lr": 0.0001, 
+            "warmup_num_steps": 400
+        }
+    }, 
+    "zero_optimization": {
+        "stage": 2, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "offload_param": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "allgather_partitions": true, 
+        "allgather_bucket_size": 5.000000e+08, 
+        "overlap_comm": true, 
+        "reduce_scatter": true, 
+        "reduce_bucket_size": 5.000000e+08, 
+        "contiguous_gradients": true
+    }, 
+    "activation_checkpointing": {
+        "partition_activations": false, 
+        "cpu_checkpointing": false, 
+        "contiguous_memory_optimization": false, 
+        "number_checkpoints": null, 
+        "synchronize_checkpoint_boundary": false, 
+        "profile": false
+    }, 
+    "gradient_accumulation_steps": 8, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": inf, 
+    "train_batch_size": 16, 
+    "min_lr": 5e-07, 
+    "train_micro_batch_size_per_gpu": 1, 
+    "wall_clock_breakdown": false, 
+    "bf16": {
+        "enabled": true
+    }
+}
+[INFO|trainer.py:1712] 2023-10-29 13:53:41,233 >> ***** Running training *****
+[INFO|trainer.py:1713] 2023-10-29 13:53:41,233 >>   Num examples = 24,000
+[INFO|trainer.py:1714] 2023-10-29 13:53:41,233 >>   Num Epochs = 10
+[INFO|trainer.py:1715] 2023-10-29 13:53:41,233 >>   Instantaneous batch size per device = 1
+[INFO|trainer.py:1718] 2023-10-29 13:53:41,233 >>   Total train batch size (w. parallel, distributed & accumulation) = 16
+[INFO|trainer.py:1719] 2023-10-29 13:53:41,233 >>   Gradient Accumulation steps = 8
+[INFO|trainer.py:1720] 2023-10-29 13:53:41,233 >>   Total optimization steps = 15,000
+[INFO|trainer.py:1721] 2023-10-29 13:53:41,234 >>   Number of trainable parameters = 6,738,415,616
+  0%|          | 0/15000 [00:00<?, ?it/s][WARNING|logging.py:305] 2023-10-29 13:53:41,250 >> `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+[WARNING|logging.py:305] 2023-10-29 13:53:41,355 >> `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+  0%|          | 1/15000 [00:30<127:57:20, 30.71s/it]  0%|          | 2/15000 [00:52<105:15:31, 25.27s/it]  0%|          | 3/15000 [01:14<98:45:05, 23.71s/it]   0%|          | 4/15000 [01:35<94:36:24, 22.71s/it]  0%|          | 5/15000 [01:56<92:58:41, 22.32s/it]  0%|          | 6/15000 [02:18<91:38:17, 22.00s/it]  0%|          | 7/15000 [02:41<92:43:44, 22.27s/it]  0%|          | 8/15000 [03:03<93:04:05, 22.35s/it]  0%|          | 9/15000 [03:24<91:15:34, 21.92s/it]  0%|          | 10/15000 [03:46<90:44:39, 21.79s/it]                                                     {'loss': 1.1842, 'learning_rate': 3.843108934201205e-05, 'epoch': 0.01}
+  0%|          | 10/15000 [03:46<90:44:39, 21.79s/it]  0%|          | 11/15000 [04:07<90:43:56, 21.79s/it]  0%|          | 12/15000 [04:30<91:34:24, 22.00s/it]  0%|          | 13/15000 [04:51<90:19:35, 21.70s/it]  0%|          | 14/15000 [05:12<89:35:49, 21.52s/it]  0%|          | 15/15000 [05:34<90:52:03, 21.83s/it]  0%|          | 16/15000 [05:57<91:32:47, 21.99s/it]  0%|          | 17/15000 [06:18<89:57:03, 21.61s/it]  0%|          | 18/15000 [06:38<88:28:24, 21.26s/it]  0%|          | 19/15000 [06:59<88:26:26, 21.25s/it]  0%|          | 20/15000 [07:20<87:46:30, 21.09s/it]                                                     {'loss': 0.4412, 'learning_rate': 5e-05, 'epoch': 0.01}
+  0%|          | 20/15000 [07:20<87:46:30, 21.09s/it][INFO|trainer.py:3115] 2023-10-29 14:01:01,698 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 14:01:01,698 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 14:01:01,699 >>   Batch size = 1
+
+  0%|          | 0/400 [00:00<?, ?it/s][A
+  1%|          | 3/400 [00:00<00:24, 16.44it/s][A
+  1%|▏         | 5/400 [00:00<00:30, 12.88it/s][A
+  2%|▏         | 7/400 [00:00<00:33, 11.80it/s][A
+  2%|▏         | 9/400 [00:00<00:34, 11.37it/s][A
+  3%|▎         | 11/400 [00:00<00:34, 11.40it/s][A
+  3%|▎         | 13/400 [00:01<00:32, 11.75it/s][A
+  4%|▍         | 15/400 [00:01<00:31, 12.14it/s][A
+  4%|▍         | 17/400 [00:01<00:32, 11.91it/s][A
+  5%|▍         | 19/400 [00:01<00:31, 11.99it/s][A
+  5%|▌         | 21/400 [00:01<00:31, 12.04it/s][A
+  6%|▌         | 23/400 [00:01<00:33, 11.41it/s][A
+  6%|▋         | 25/400 [00:02<00:33, 11.20it/s][A
+  7%|▋         | 27/400 [00:02<00:33, 11.28it/s][A
+  7%|▋         | 29/400 [00:02<00:32, 11.37it/s][A
+  8%|▊         | 31/400 [00:02<00:30, 11.93it/s][A
+  8%|▊         | 33/400 [00:02<00:30, 11.87it/s][A
+  9%|▉         | 35/400 [00:02<00:30, 12.04it/s][A
+  9%|▉         | 37/400 [00:03<00:30, 11.84it/s][A
+ 10%|▉         | 39/400 [00:03<00:30, 11.92it/s][A
+ 10%|█         | 41/400 [00:03<00:29, 12.26it/s][A
+ 11%|█         | 43/400 [00:03<00:29, 12.27it/s][A
+ 11%|█▏        | 45/400 [00:03<00:30, 11.60it/s][A
+ 12%|█▏        | 47/400 [00:03<00:30, 11.74it/s][A
+ 12%|█▏        | 49/400 [00:04<00:29, 12.08it/s][A
+ 13%|█▎        | 51/400 [00:04<00:29, 11.87it/s][A
+ 13%|█▎        | 53/400 [00:04<00:29, 11.86it/s][A
+ 14%|█▍        | 55/400 [00:04<00:28, 12.04it/s][A
+ 14%|█▍        | 57/400 [00:04<00:27, 12.30it/s][A
+ 15%|█▍        | 59/400 [00:04<00:27, 12.50it/s][A
+ 15%|█▌        | 61/400 [00:05<00:28, 11.92it/s][A
+ 16%|█▌        | 63/400 [00:05<00:27, 12.04it/s][A
+ 16%|█▋        | 65/400 [00:05<00:28, 11.80it/s][A
+ 17%|█▋        | 67/400 [00:05<00:27, 12.30it/s][A
+ 17%|█▋        | 69/400 [00:05<00:27, 12.19it/s][A
+ 18%|█▊        | 71/400 [00:05<00:26, 12.40it/s][A
+ 18%|█▊        | 73/400 [00:06<00:25, 12.71it/s][A
+ 19%|█▉        | 75/400 [00:06<00:25, 12.54it/s][A
+ 19%|█▉        | 77/400 [00:06<00:25, 12.58it/s][A
+ 20%|█▉        | 79/400 [00:06<00:26, 12.20it/s][A
+ 20%|██        | 81/400 [00:06<00:26, 11.93it/s][A
+ 21%|██        | 83/400 [00:06<00:26, 12.17it/s][A
+ 21%|██▏       | 85/400 [00:07<00:25, 12.50it/s][A
+ 22%|██▏       | 87/400 [00:07<00:24, 12.80it/s][A
+ 22%|██▏       | 89/400 [00:07<00:24, 12.89it/s][A
+ 23%|██▎       | 91/400 [00:07<00:23, 12.88it/s][A
+ 23%|██▎       | 93/400 [00:07<00:23, 12.88it/s][A
+ 24%|██▍       | 95/400 [00:07<00:23, 13.01it/s][A
+ 24%|██▍       | 97/400 [00:07<00:23, 12.96it/s][A
+ 25%|██▍       | 99/400 [00:08<00:22, 13.22it/s][A
+ 25%|██▌       | 101/400 [00:08<00:23, 12.90it/s][A
+ 26%|██▌       | 103/400 [00:08<00:22, 13.35it/s][A
+ 26%|██▋       | 105/400 [00:08<00:21, 13.44it/s][A
+ 27%|██▋       | 107/400 [00:08<00:21, 13.32it/s][A
+ 27%|██▋       | 109/400 [00:08<00:22, 13.20it/s][A
+ 28%|██▊       | 111/400 [00:09<00:21, 13.18it/s][A
+ 28%|██▊       | 113/400 [00:09<00:21, 13.15it/s][A
+ 29%|██▉       | 115/400 [00:09<00:23, 12.18it/s][A
+ 29%|██▉       | 117/400 [00:09<00:25, 11.04it/s][A
+ 30%|██▉       | 119/400 [00:09<00:24, 11.52it/s][A
+ 30%|███       | 121/400 [00:09<00:23, 11.78it/s][A
+ 31%|███       | 123/400 [00:10<00:22, 12.37it/s][A
+ 31%|███▏      | 125/400 [00:10<00:22, 12.12it/s][A
+ 32%|███▏      | 127/400 [00:10<00:22, 11.91it/s][A
+ 32%|███▏      | 129/400 [00:10<00:22, 11.97it/s][A
+ 33%|███▎      | 131/400 [00:10<00:22, 11.92it/s][A
+ 33%|███▎      | 133/400 [00:10<00:22, 11.71it/s][A
+ 34%|███▍      | 135/400 [00:11<00:22, 11.70it/s][A
+ 34%|███▍      | 137/400 [00:11<00:22, 11.66it/s][A
+ 35%|███▍      | 139/400 [00:11<00:22, 11.81it/s][A
+ 35%|███▌      | 141/400 [00:11<00:21, 11.97it/s][A
+ 36%|███▌      | 143/400 [00:11<00:21, 11.99it/s][A
+ 36%|███▋      | 145/400 [00:11<00:21, 11.95it/s][A
+ 37%|███▋      | 147/400 [00:12<00:20, 12.31it/s][A
+ 37%|███▋      | 149/400 [00:12<00:19, 12.62it/s][A
+ 38%|███▊      | 151/400 [00:12<00:19, 12.76it/s][A
+ 38%|███▊      | 153/400 [00:12<00:19, 12.40it/s][A
+ 39%|███▉      | 155/400 [00:12<00:20, 12.13it/s][A
+ 39%|███▉      | 157/400 [00:12<00:20, 12.06it/s][A
+ 40%|███▉      | 159/400 [00:13<00:19, 12.55it/s][A
+ 40%|████      | 161/400 [00:13<00:18, 13.11it/s][A
+ 41%|████      | 163/400 [00:13<00:18, 13.02it/s][A
+ 41%|████▏     | 165/400 [00:13<00:18, 12.62it/s][A
+ 42%|████▏     | 167/400 [00:13<00:20, 11.49it/s][A
+ 42%|████▏     | 169/400 [00:13<00:19, 11.70it/s][A
+ 43%|████▎     | 171/400 [00:14<00:19, 11.77it/s][A
+ 43%|████▎     | 173/400 [00:14<00:18, 12.27it/s][A
+ 44%|████▍     | 175/400 [00:14<00:17, 12.69it/s][A
+ 44%|████▍     | 177/400 [00:14<00:17, 12.47it/s][A
+ 45%|████▍     | 179/400 [00:14<00:17, 12.65it/s][A
+ 45%|████▌     | 181/400 [00:14<00:17, 12.48it/s][A
+ 46%|████▌     | 183/400 [00:14<00:17, 12.12it/s][A
+ 46%|████▋     | 185/400 [00:15<00:17, 12.59it/s][A
+ 47%|████▋     | 187/400 [00:15<00:17, 12.44it/s][A
+ 47%|████▋     | 189/400 [00:15<00:16, 12.61it/s][A
+ 48%|████▊     | 191/400 [00:15<00:16, 12.68it/s][A
+ 48%|████▊     | 193/400 [00:15<00:16, 12.34it/s][A
+ 49%|████▉     | 195/400 [00:15<00:17, 11.83it/s][A
+ 49%|████▉     | 197/400 [00:16<00:16, 12.03it/s][A
+ 50%|████▉     | 199/400 [00:16<00:16, 12.35it/s][A
+ 50%|█████     | 201/400 [00:16<00:15, 12.61it/s][A
+ 51%|█████     | 203/400 [00:16<00:15, 12.79it/s][A
+ 51%|█████▏    | 205/400 [00:16<00:15, 12.80it/s][A
+ 52%|█████▏    | 207/400 [00:16<00:14, 12.88it/s][A
+ 52%|█████▏    | 209/400 [00:17<00:15, 12.60it/s][A
+ 53%|█████▎    | 211/400 [00:17<00:15, 12.28it/s][A
+ 53%|█████▎    | 213/400 [00:17<00:15, 12.04it/s][A
+ 54%|█████▍    | 215/400 [00:17<00:15, 11.60it/s][A
+ 54%|█████▍    | 217/400 [00:17<00:15, 11.60it/s][A
+ 55%|█████▍    | 219/400 [00:17<00:15, 11.68it/s][A
+ 55%|█████▌    | 221/400 [00:18<00:14, 12.16it/s][A
+ 56%|█████▌    | 223/400 [00:18<00:14, 12.23it/s][A
+ 56%|█████▋    | 225/400 [00:18<00:15, 11.65it/s][A
+ 57%|█████▋    | 227/400 [00:18<00:14, 12.15it/s][A
+ 57%|█████▋    | 229/400 [00:18<00:13, 12.36it/s][A
+ 58%|█████▊    | 231/400 [00:18<00:14, 11.33it/s][A
+ 58%|█████▊    | 233/400 [00:19<00:15, 11.11it/s][A
+ 59%|█████▉    | 235/400 [00:19<00:14, 11.27it/s][A
+ 59%|█████▉    | 237/400 [00:19<00:14, 11.43it/s][A
+ 60%|█████▉    | 239/400 [00:19<00:13, 11.96it/s][A
+ 60%|██████    | 241/400 [00:19<00:12, 12.43it/s][A
+ 61%|██████    | 243/400 [00:19<00:12, 12.57it/s][A
+ 61%|██████▏   | 245/400 [00:20<00:12, 12.53it/s][A
+ 62%|██████▏   | 247/400 [00:20<00:12, 12.49it/s][A
+ 62%|██████▏   | 249/400 [00:20<00:12, 11.84it/s][A
+ 63%|██████▎   | 251/400 [00:20<00:12, 12.13it/s][A
+ 63%|██████▎   | 253/400 [00:20<00:11, 12.59it/s][A
+ 64%|██████▍   | 255/400 [00:20<00:11, 12.21it/s][A
+ 64%|██████▍   | 257/400 [00:21<00:11, 12.00it/s][A
+ 65%|██████▍   | 259/400 [00:21<00:12, 11.67it/s][A
+ 65%|██████▌   | 261/400 [00:21<00:11, 11.98it/s][A
+ 66%|██████▌   | 263/400 [00:21<00:11, 12.19it/s][A
+ 66%|██████▋   | 265/400 [00:21<00:11, 11.98it/s][A
+ 67%|██████▋   | 267/400 [00:21<00:11, 11.79it/s][A
+ 67%|██████▋   | 269/400 [00:22<00:10, 11.92it/s][A
+ 68%|██████▊   | 271/400 [00:22<00:10, 12.07it/s][A
+ 68%|██████▊   | 273/400 [00:22<00:10, 11.92it/s][A
+ 69%|██████▉   | 275/400 [00:22<00:10, 12.24it/s][A
+ 69%|██████▉   | 277/400 [00:22<00:10, 12.16it/s][A
+ 70%|██████▉   | 279/400 [00:22<00:09, 12.51it/s][A
+ 70%|███████   | 281/400 [00:23<00:09, 12.27it/s][A
+ 71%|███████   | 283/400 [00:23<00:09, 12.34it/s][A
+ 71%|███████▏  | 285/400 [00:23<00:09, 12.53it/s][A
+ 72%|███████▏  | 287/400 [00:23<00:09, 12.49it/s][A
+ 72%|███████▏  | 289/400 [00:23<00:08, 12.72it/s][A
+ 73%|███████▎  | 291/400 [00:23<00:08, 12.89it/s][A
+ 73%|███████▎  | 293/400 [00:23<00:08, 13.09it/s][A
+ 74%|███████▍  | 295/400 [00:24<00:08, 12.56it/s][A
+ 74%|███████▍  | 297/400 [00:24<00:08, 12.13it/s][A
+ 75%|███████▍  | 299/400 [00:24<00:08, 12.46it/s][A
+ 75%|███████▌  | 301/400 [00:24<00:07, 12.63it/s][A
+ 76%|███████▌  | 303/400 [00:24<00:08, 11.95it/s][A
+ 76%|███████▋  | 305/400 [00:24<00:07, 12.37it/s][A
+ 77%|███████▋  | 307/400 [00:25<00:07, 12.61it/s][A
+ 77%|███████▋  | 309/400 [00:25<00:07, 12.51it/s][A
+ 78%|███████▊  | 311/400 [00:25<00:06, 12.73it/s][A
+ 78%|███████▊  | 313/400 [00:25<00:06, 12.48it/s][A
+ 79%|███████▉  | 315/400 [00:25<00:06, 12.74it/s][A
+ 79%|███████▉  | 317/400 [00:25<00:06, 12.74it/s][A
+ 80%|███████▉  | 319/400 [00:26<00:06, 13.05it/s][A
+ 80%|████████  | 321/400 [00:26<00:06, 11.96it/s][A
+ 81%|████████  | 323/400 [00:26<00:06, 12.12it/s][A
+ 81%|████████▏ | 325/400 [00:26<00:06, 12.39it/s][A
+ 82%|████████▏ | 327/400 [00:26<00:05, 12.64it/s][A
+ 82%|████████▏ | 329/400 [00:26<00:05, 12.60it/s][A
+ 83%|████████▎ | 331/400 [00:27<00:05, 12.82it/s][A
+ 83%|████████▎ | 333/400 [00:27<00:05, 12.99it/s][A
+ 84%|████████▍ | 335/400 [00:27<00:05, 12.90it/s][A
+ 84%|████████▍ | 337/400 [00:27<00:04, 13.00it/s][A
+ 85%|████████▍ | 339/400 [00:27<00:04, 13.16it/s][A
+ 85%|████████▌ | 341/400 [00:27<00:04, 13.34it/s][A
+ 86%|████████▌ | 343/400 [00:27<00:04, 13.17it/s][A
+ 86%|████████▋ | 345/400 [00:28<00:04, 12.64it/s][A
+ 87%|████████▋ | 347/400 [00:28<00:04, 12.41it/s][A
+ 87%|████████▋ | 349/400 [00:28<00:04, 12.25it/s][A
+ 88%|████████▊ | 351/400 [00:28<00:04, 12.05it/s][A
+ 88%|████████▊ | 353/400 [00:28<00:03, 12.28it/s][A
+ 89%|████████▉ | 355/400 [00:28<00:03, 12.55it/s][A
+ 89%|████████▉ | 357/400 [00:29<00:03, 12.64it/s][A
+ 90%|████████▉ | 359/400 [00:29<00:03, 12.92it/s][A
+ 90%|█████████ | 361/400 [00:29<00:03, 12.76it/s][A
+ 91%|█████████ | 363/400 [00:29<00:02, 12.40it/s][A
+ 91%|█████████▏| 365/400 [00:29<00:02, 11.78it/s][A
+ 92%|█████████▏| 367/400 [00:29<00:02, 11.61it/s][A
+ 92%|█████████▏| 369/400 [00:30<00:02, 11.69it/s][A
+ 93%|█████████▎| 371/400 [00:30<00:02, 12.19it/s][A
+ 93%|█████████▎| 373/400 [00:30<00:02, 12.14it/s][A
+ 94%|█████████▍| 375/400 [00:30<00:02, 11.92it/s][A
+ 94%|█████████▍| 377/400 [00:30<00:02, 11.41it/s][A
+ 95%|█████████▍| 379/400 [00:30<00:01, 11.92it/s][A
+ 95%|█████████▌| 381/400 [00:31<00:01, 11.74it/s][A
+ 96%|█████████▌| 383/400 [00:31<00:01, 11.26it/s][A
+ 96%|█████████▋| 385/400 [00:31<00:01, 10.69it/s][A
+ 97%|█████████▋| 387/400 [00:31<00:01, 10.70it/s][A
+ 97%|█████████▋| 389/400 [00:31<00:00, 11.05it/s][A
+ 98%|█████████▊| 391/400 [00:32<00:00, 11.16it/s][A
+ 98%|█████████▊| 393/400 [00:32<00:00, 11.74it/s][A
+ 99%|█████████▉| 395/400 [00:32<00:00, 12.16it/s][A
+ 99%|█████████▉| 397/400 [00:32<00:00, 12.38it/s][A
+100%|█████████▉| 399/400 [00:32<00:00, 11.80it/s][A                                                     
+                                                 [A{'eval_loss': 0.5427381992340088, 'eval_accuracy': 0.8735755813953489, 'eval_runtime': 34.21, 'eval_samples_per_second': 23.385, 'eval_steps_per_second': 11.693, 'epoch': 0.01}
+  0%|          | 20/15000 [07:54<87:46:30, 21.09s/it]
+100%|██████████| 400/400 [00:34<00:00, 11.80it/s][A
+                                                 [A[INFO|trainer.py:2841] 2023-10-29 14:01:43,482 >> Saving model checkpoint to llama/checkpoint-20
+[INFO|configuration_utils.py:460] 2023-10-29 14:01:43,483 >> Configuration saved in llama/checkpoint-20/config.json
+[INFO|configuration_utils.py:544] 2023-10-29 14:01:43,484 >> Configuration saved in llama/checkpoint-20/generation_config.json
+[INFO|modeling_utils.py:2012] 2023-10-29 14:01:55,850 >> The model is bigger than the maximum size per checkpoint (10GB) and is going to be split in 2 checkpoint shards. You can find where each parameters has been saved in the index located at llama/checkpoint-20/pytorch_model.bin.index.json.
+[INFO|tokenization_utils_base.py:2235] 2023-10-29 14:01:55,851 >> tokenizer config file saved in llama/checkpoint-20/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2242] 2023-10-29 14:01:55,851 >> Special tokens file saved in llama/checkpoint-20/special_tokens_map.json
+[2023-10-29 14:01:56,320] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step20 is about to be saved!
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+[2023-10-29 14:01:56,328] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: llama/checkpoint-20/global_step20/mp_rank_00_model_states.pt
+[2023-10-29 14:01:56,328] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-20/global_step20/mp_rank_00_model_states.pt...
+[2023-10-29 14:02:15,380] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-20/global_step20/mp_rank_00_model_states.pt.
+[2023-10-29 14:02:15,382] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-20/global_step20/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt...
+[2023-10-29 14:03:01,911] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-20/global_step20/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt.
+[2023-10-29 14:03:01,912] [INFO] [engine.py:3375:_save_zero_checkpoint] zero checkpoint saved llama/checkpoint-20/global_step20/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt
+[2023-10-29 14:03:01,912] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step20 is ready now!
+  0%|          | 21/15000 [09:48<246:40:41, 59.29s/it]  0%|          | 22/15000 [10:10<199:21:56, 47.92s/it]  0%|          | 23/15000 [10:31<166:02:21, 39.91s/it]  0%|          | 24/15000 [10:53<143:33:29, 34.51s/it]  0%|          | 25/15000 [11:14<126:33:19, 30.42s/it]  0%|          | 26/15000 [11:34<113:39:29, 27.33s/it]  0%|          | 27/15000 [11:55<106:32:14, 25.62s/it]  0%|          | 28/15000 [12:17<101:13:23, 24.34s/it]  0%|          | 29/15000 [12:38<96:40:54, 23.25s/it]   0%|          | 30/15000 [12:58<93:28:58, 22.48s/it]                                                     {'loss': 0.4331, 'learning_rate': 5.6767378909116276e-05, 'epoch': 0.02}
+  0%|          | 30/15000 [12:58<93:28:58, 22.48s/it]  0%|          | 31/15000 [13:20<92:09:01, 22.16s/it]  0%|          | 32/15000 [13:41<91:03:15, 21.90s/it]  0%|          | 33/15000 [14:02<90:06:31, 21.67s/it]  0%|          | 34/15000 [14:23<88:51:26, 21.37s/it]  0%|          | 35/15000 [14:43<87:25:54, 21.03s/it]  0%|          | 36/15000 [15:04<87:26:35, 21.04s/it]  0%|          | 37/15000 [15:25<87:02:44, 20.94s/it]  0%|          | 38/15000 [15:46<87:22:07, 21.02s/it]  0%|          | 39/15000 [16:07<87:36:42, 21.08s/it]  0%|          | 40/15000 [16:28<86:59:58, 20.94s/it]                                                     {'loss': 0.4519, 'learning_rate': 6.156891065798796e-05, 'epoch': 0.03}
+  0%|          | 40/15000 [16:28<86:59:58, 20.94s/it][INFO|trainer.py:3115] 2023-10-29 14:10:09,504 >> ***** Running Evaluation *****
+[INFO|trainer.py:3117] 2023-10-29 14:10:09,504 >>   Num examples = 800
+[INFO|trainer.py:3120] 2023-10-29 14:10:09,504 >>   Batch size = 1
+
+  0%|          | 0/400 [00:00<?, ?it/s][A
+  1%|          | 3/400 [00:00<00:24, 16.45it/s][A
+  1%|▏         | 5/400 [00:00<00:30, 12.80it/s][A
+  2%|▏         | 7/400 [00:00<00:33, 11.62it/s][A
+  2%|▏         | 9/400 [00:00<00:34, 11.28it/s][A
+  3%|▎         | 11/400 [00:00<00:34, 11.30it/s][A
+  3%|▎         | 13/400 [00:01<00:33, 11.63it/s][A
+  4%|▍         | 15/400 [00:01<00:31, 12.04it/s][A
+  4%|▍         | 17/400 [00:01<00:32, 11.81it/s][A
+  5%|▍         | 19/400 [00:01<00:31, 11.92it/s][A
+  5%|▌         | 21/400 [00:01<00:31, 11.97it/s][A
+  6%|▌         | 23/400 [00:01<00:33, 11.35it/s][A
+  6%|▋         | 25/400 [00:02<00:33, 11.21it/s][A
+  7%|▋         | 27/400 [00:02<00:32, 11.34it/s][A
+  7%|▋         | 29/400 [00:02<00:32, 11.38it/s][A
+  8%|▊         | 31/400 [00:02<00:31, 11.90it/s][A
+  8%|▊         | 33/400 [00:02<00:30, 11.86it/s][A
+  9%|▉         | 35/400 [00:02<00:30, 11.99it/s][A
+  9%|▉         | 37/400 [00:03<00:30, 11.79it/s][A
+ 10%|▉         | 39/400 [00:03<00:30, 11.85it/s][A
+ 10%|█         | 41/400 [00:03<00:29, 12.20it/s][A
+ 11%|█         | 43/400 [00:03<00:29, 12.22it/s][A
+ 11%|█▏        | 45/400 [00:03<00:30, 11.59it/s][A
+ 12%|█▏        | 47/400 [00:03<00:30, 11.71it/s][A
+ 12%|█▏        | 49/400 [00:04<00:29, 12.06it/s][A
+ 13%|█▎        | 51/400 [00:04<00:29, 11.89it/s][A
+ 13%|█▎        | 53/400 [00:04<00:29, 11.89it/s][A
+ 14%|█▍        | 55/400 [00:04<00:28, 12.04it/s][A
+ 14%|█▍        | 57/400 [00:04<00:27, 12.28it/s][A
+ 15%|█▍        | 59/400 [00:04<00:27, 12.46it/s][A
+ 15%|█▌        | 61/400 [00:05<00:28, 11.86it/s][A
+ 16%|█▌        | 63/400 [00:05<00:28, 11.98it/s][A
+ 16%|█▋        | 65/400 [00:05<00:28, 11.82it/s][A
+ 17%|█▋        | 67/400 [00:05<00:27, 12.32it/s][A
+ 17%|█▋        | 69/400 [00:05<00:27, 12.17it/s][A
+ 18%|█▊        | 71/400 [00:05<00:26, 12.30it/s][A
+ 18%|█▊        | 73/400 [00:06<00:25, 12.62it/s][A
+ 19%|█▉        | 75/400 [00:06<00:26, 12.47it/s][A
+ 19%|█▉        | 77/400 [00:06<00:25, 12.55it/s][A
+ 20%|█▉        | 79/400 [00:06<00:26, 12.18it/s][A
+ 20%|██        | 81/400 [00:06<00:26, 11.94it/s][A
+ 21%|██        | 83/400 [00:06<00:26, 12.18it/s][A
+ 21%|██▏       | 85/400 [00:07<00:25, 12.51it/s][A
+ 22%|██▏       | 87/400 [00:07<00:24, 12.90it/s][A
+ 22%|██▏       | 89/400 [00:07<00:23, 12.96it/s][A
+ 23%|██▎       | 91/400 [00:07<00:23, 12.92it/s][A
+ 23%|██▎       | 93/400 [00:07<00:24, 12.77it/s][A
+ 24%|██▍       | 95/400 [00:07<00:23, 12.86it/s][A
+ 24%|██▍       | 97/400 [00:07<00:23, 12.84it/s][A
+ 25%|██▍       | 99/400 [00:08<00:22, 13.16it/s][A
+ 25%|██▌       | 101/400 [00:08<00:23, 12.89it/s][A
+ 26%|██▌       | 103/400 [00:08<00:22, 13.32it/s][A
+ 26%|██▋       | 105/400 [00:08<00:21, 13.41it/s][A
+ 27%|██▋       | 107/400 [00:08<00:22, 13.28it/s][A
+ 27%|██▋       | 109/400 [00:08<00:22, 13.17it/s][A
+ 28%|██▊       | 111/400 [00:09<00:21, 13.16it/s][A
+ 28%|██▊       | 113/400 [00:09<00:21, 13.14it/s][A
+ 29%|██▉       | 115/400 [00:09<00:23, 12.19it/s][A
+ 29%|██▉       | 117/400 [00:09<00:25, 11.14it/s][A
+ 30%|██▉       | 119/400 [00:09<00:24, 11.61it/s][A
+ 30%|███       | 121/400 [00:09<00:23, 11.83it/s][A
+ 31%|███       | 123/400 [00:10<00:22, 12.39it/s][A
+ 31%|███▏      | 125/400 [00:10<00:22, 12.13it/s][A
+ 32%|███▏      | 127/400 [00:10<00:22, 12.00it/s][A
+ 32%|███▏      | 129/400 [00:10<00:22, 12.02it/s][A
+ 33%|███▎      | 131/400 [00:10<00:22, 11.95it/s][A
+ 33%|███▎      | 133/400 [00:10<00:22, 11.68it/s][A
+ 34%|███▍      | 135/400 [00:11<00:22, 11.65it/s][A
+ 34%|███▍      | 137/400 [00:11<00:22, 11.58it/s][A
+ 35%|███▍      | 139/400 [00:11<00:22, 11.71it/s][A
+ 35%|███▌      | 141/400 [00:11<00:21, 11.84it/s][A
+ 36%|███▌      | 143/400 [00:11<00:21, 11.82it/s][A
+ 36%|███▋      | 145/400 [00:11<00:21, 11.76it/s][A
+ 37%|███▋      | 147/400 [00:12<00:20, 12.08it/s][A
+ 37%|███▋      | 149/400 [00:12<00:20, 12.40it/s][A
+ 38%|███▊      | 151/400 [00:12<00:19, 12.52it/s][A
+ 38%|███▊      | 153/400 [00:12<00:20, 12.01it/s][A
+ 39%|███▉      | 155/400 [00:12<00:20, 11.70it/s][A
+ 39%|███▉      | 157/400 [00:12<00:20, 11.73it/s][A
+ 40%|███▉      | 159/400 [00:13<00:19, 12.09it/s][A
+ 40%|████      | 161/400 [00:13<00:18, 12.66it/s][A
+ 41%|████      | 163/400 [00:13<00:18, 12.61it/s][A
+ 41%|████▏     | 165/400 [00:13<00:19, 12.29it/s][A
+ 42%|████▏     | 167/400 [00:13<00:20, 11.25it/s][A
+ 42%|████▏     | 169/400 [00:13<00:20, 11.48it/s][A
+ 43%|████▎     | 171/400 [00:14<00:19, 11.46it/s][A
+ 43%|████▎     | 173/400 [00:14<00:18, 11.98it/s][A
+ 44%|████▍     | 175/400 [00:14<00:18, 12.42it/s][A
+ 44%|████▍     | 177/400 [00:14<00:18, 12.22it/s][A
+ 45%|████▍     | 179/400 [00:14<00:17, 12.50it/s][A
+ 45%|████▌     | 181/400 [00:14<00:17, 12.44it/s][A
+ 46%|████▌     | 183/400 [00:15<00:18, 12.03it/s][A
+ 46%|████▋     | 185/400 [00:15<00:17, 12.46it/s][A
+ 47%|████▋     | 187/400 [00:15<00:17, 11.91it/s][A
+ 47%|████▋     | 189/400 [00:15<00:17, 12.17it/s][A
+ 48%|████▊     | 191/400 [00:15<00:16, 12.34it/s][A
+ 48%|████▊     | 193/400 [00:15<00:17, 12.03it/s][A
+ 49%|████▉     | 195/400 [00:16<00:17, 11.58it/s][A
+ 49%|████▉     | 197/400 [00:16<00:17, 11.78it/s][A
+ 50%|████▉     | 199/400 [00:16<00:16, 12.16it/s][A
+ 50%|█████     | 201/400 [00:16<00:16, 12.41it/s][A
+ 51%|█████     | 203/400 [00:16<00:15, 12.60it/s][A
+ 51%|█████▏    | 205/400 [00:16<00:15, 12.52it/s][A
+ 52%|█████▏    | 207/400 [00:17<00:15, 12.61it/s][A
+ 52%|█████▏    | 209/400 [00:17<00:15, 12.35it/s][A
+ 53%|█████▎    | 211/400 [00:17<00:15, 12.08it/s][A
+ 53%|█████▎    | 213/400 [00:17<00:15, 11.86it/s][A
+ 54%|█████▍    | 215/400 [00:17<00:16, 11.44it/s][A
+ 54%|█████▍    | 217/400 [00:17<00:15, 11.45it/s][A
+ 55%|█████▍    | 219/400 [00:18<00:15, 11.52it/s][A
+ 55%|█████▌    | 221/400 [00:18<00:14, 11.97it/s][A
+ 56%|█████▌    | 223/400 [00:18<00:14, 12.07it/s][A
+ 56%|█████▋    | 225/400 [00:18<00:15, 11.52it/s][A
+ 57%|█████▋    | 227/400 [00:18<00:14, 12.01it/s][A
+ 57%|█████▋    | 229/400 [00:18<00:14, 12.14it/s][A
+ 58%|█████▊    | 231/400 [00:19<00:15, 11.12it/s][A
+ 58%|█████▊    | 233/400 [00:19<00:15, 10.94it/s][A
+ 59%|█████▉    | 235/400 [00:19<00:15, 10.98it/s][A
+ 59%|█████▉    | 237/400 [00:19<00:14, 11.19it/s][A
+ 60%|█████▉    | 239/400 [00:19<00:13, 11.75it/s][A
+ 60%|██████    | 241/400 [00:19<00:13, 12.22it/s][A
+ 61%|██████    | 243/400 [00:20<00:12, 12.40it/s][A
+ 61%|██████▏   | 245/400 [00:20<00:12, 12.36it/s][A
+ 62%|██████▏   | 247/400 [00:20<00:12, 12.33it/s][A
+ 62%|██████▏   | 249/400 [00:20<00:12, 11.71it/s][A
+ 63%|██████▎   | 251/400 [00:20<00:12, 11.96it/s][A
+ 63%|██████▎   | 253/400 [00:20<00:11, 12.41it/s][A
+ 64%|██████▍   | 255/400 [00:21<00:12, 12.07it/s][A
+ 64%|██████▍   | 257/400 [00:21<00:12, 11.84it/s][A
+ 65%|██████▍   | 259/400 [00:21<00:12, 11.64it/s][A
+ 65%|██████▌   | 261/400 [00:21<00:11, 11.87it/s][A
+ 66%|██████▌   | 263/400 [00:21<00:11, 12.05it/s][A
+ 66%|██████▋   | 265/400 [00:21<00:11, 11.82it/s][A
+ 67%|██████▋   | 267/400 [00:22<00:11, 11.60it/s][A
+ 67%|██████▋   | 269/400 [00:22<00:11, 11.70it/s][A
+ 68%|██████▊   | 271/400 [00:22<00:10, 11.86it/s][A
+ 68%|██████▊   | 273/400 [00:22<00:10, 11.72it/s][A
+ 69%|██████▉   | 275/400 [00:22<00:10, 12.03it/s][A
+ 69%|██████▉   | 277/400 [00:22<00:10, 11.94it/s][A
+ 70%|██████▉   | 279/400 [00:23<00:09, 12.28it/s][A
+ 70%|███████   | 281/400 [00:23<00:09, 12.07it/s][A
+ 71%|███████   | 283/400 [00:23<00:09, 12.12it/s][A
+ 71%|███████▏  | 285/400 [00:23<00:09, 12.29it/s][A
+ 72%|███████▏  | 287/400 [00:23<00:09, 12.24it/s][A
+ 72%|███████▏  | 289/400 [00:23<00:08, 12.46it/s][A
+ 73%|███████▎  | 291/400 [00:24<00:08, 12.64it/s][A
+ 73%|███████▎  | 293/400 [00:24<00:08, 12.76it/s][A
+ 74%|███████▍  | 295/400 [00:24<00:08, 12.33it/s][A
+ 74%|███████▍  | 297/400 [00:24<00:08, 11.95it/s][A
+ 75%|███████▍  | 299/400 [00:24<00:08, 12.27it/s][A
+ 75%|███████▌  | 301/400 [00:24<00:07, 12.44it/s][A
+ 76%|███████▌  | 303/400 [00:25<00:08, 11.74it/s][A
+ 76%|███████▋  | 305/400 [00:25<00:07, 12.00it/s][A
+ 77%|███████▋  | 307/400 [00:25<00:07, 12.23it/s][A
+ 77%|███████▋  | 309/400 [00:25<00:07, 12.16it/s][A
+ 78%|███████▊  | 311/400 [00:25<00:07, 12.41it/s][A
+ 78%|███████▊  | 313/400 [00:25<00:07, 12.21it/s][A
+ 79%|███████▉  | 315/400 [00:26<00:06, 12.52it/s][A
+ 79%|███████▉  | 317/400 [00:26<00:06, 12.56it/s][A
+ 80%|███████▉  | 319/400 [00:26<00:06, 12.82it/s][A
+ 80%|████████  | 321/400 [00:26<00:06, 11.80it/s][A
+ 81%|████████  | 323/400 [00:26<00:06, 11.94it/s][A
+ 81%|████████▏ | 325/400 [00:26<00:06, 12.22it/s][A
+ 82%|████████▏ | 327/400 [00:27<00:05, 12.44it/s][A
+ 82%|████████▏ | 329/400 [00:27<00:05, 12.51it/s][A
+ 83%|████████▎ | 331/400 [00:27<00:05, 12.65it/s][A
+ 83%|████████▎ | 333/400 [00:27<00:05, 12.73it/s][A
+ 84%|████████▍ | 335/400 [00:27<00:05, 12.69it/s][A
+ 84%|████████▍ | 337/400 [00:27<00:04, 12.81it/s][A
+ 85%|████████▍ | 339/400 [00:27<00:04, 12.95it/s][A
+ 85%|████████▌ | 341/400 [00:28<00:04, 13.11it/s][A
+ 86%|████████▌ | 343/400 [00:28<00:04, 12.99it/s][A
+ 86%|████████▋ | 345/400 [00:28<00:04, 12.44it/s][A
+ 87%|████████▋ | 347/400 [00:28<00:04, 12.21it/s][A
+ 87%|████████▋ | 349/400 [00:28<00:04, 12.12it/s][A
+ 88%|████████▊ | 351/400 [00:28<00:04, 11.86it/s][A
+ 88%|████████▊ | 353/400 [00:29<00:03, 12.02it/s][A
+ 89%|████████▉ | 355/400 [00:29<00:03, 12.29it/s][A
+ 89%|████████▉ | 357/400 [00:29<00:03, 12.32it/s][A
+ 90%|████████▉ | 359/400 [00:29<00:03, 12.63it/s][A
+ 90%|█████████ | 361/400 [00:29<00:03, 12.50it/s][A
+ 91%|█████████ | 363/400 [00:29<00:03, 12.15it/s][A
+ 91%|█████████▏| 365/400 [00:30<00:03, 11.58it/s][A
+ 92%|█████████▏| 367/400 [00:30<00:02, 11.49it/s][A
+ 92%|█████████▏| 369/400 [00:30<00:02, 11.56it/s][A
+ 93%|█████████▎| 371/400 [00:30<00:02, 12.02it/s][A
+ 93%|█████████▎| 373/400 [00:30<00:02, 11.93it/s][A
+ 94%|█████████▍| 375/400 [00:30<00:02, 11.69it/s][A
+ 94%|█████████▍| 377/400 [00:31<00:02, 11.17it/s][A
+ 95%|█████████▍| 379/400 [00:31<00:01, 11.61it/s][A
+ 95%|█████████▌| 381/400 [00:31<00:01, 11.52it/s][A
+ 96%|█████████▌| 383/400 [00:31<00:01, 11.12it/s][A
+ 96%|█████████▋| 385/400 [00:31<00:01, 10.59it/s][A
+ 97%|█████████▋| 387/400 [00:32<00:01, 10.61it/s][A
+ 97%|█████████▋| 389/400 [00:32<00:01, 10.96it/s][A
+ 98%|█████████▊| 391/400 [00:32<00:00, 11.09it/s][A
+ 98%|█████████▊| 393/400 [00:32<00:00, 11.70it/s][A
+ 99%|█████████▉| 395/400 [00:32<00:00, 12.16it/s][A
+ 99%|█████████▉| 397/400 [00:32<00:00, 12.38it/s][A
+100%|█████████▉| 399/400 [00:33<00:00, 11.80it/s][A                                                     
+                                                 [A{'eval_loss': 0.554792582988739, 'eval_accuracy': 0.8700693202146691, 'eval_runtime': 35.6465, 'eval_samples_per_second': 22.443, 'eval_steps_per_second': 11.221, 'epoch': 0.03}
+  0%|          | 40/15000 [17:03<86:59:58, 20.94s/it]
+100%|██████████| 400/400 [00:35<00:00, 11.80it/s][A
+                                                 [A[INFO|trainer.py:2841] 2023-10-29 14:10:54,379 >> Saving model checkpoint to llama/checkpoint-40
+[INFO|configuration_utils.py:460] 2023-10-29 14:10:54,385 >> Configuration saved in llama/checkpoint-40/config.json
+[INFO|configuration_utils.py:544] 2023-10-29 14:10:54,387 >> Configuration saved in llama/checkpoint-40/generation_config.json
+[INFO|modeling_utils.py:2012] 2023-10-29 14:11:12,164 >> The model is bigger than the maximum size per checkpoint (10GB) and is going to be split in 2 checkpoint shards. You can find where each parameters has been saved in the index located at llama/checkpoint-40/pytorch_model.bin.index.json.
+[INFO|tokenization_utils_base.py:2235] 2023-10-29 14:11:12,165 >> tokenizer config file saved in llama/checkpoint-40/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2242] 2023-10-29 14:11:12,165 >> Special tokens file saved in llama/checkpoint-40/special_tokens_map.json
+[2023-10-29 14:11:12,959] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step40 is about to be saved!
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+/data/zhangxiaoming/miniconda3/envs/env/lib/python3.9/site-packages/torch/nn/modules/module.py:1432: UserWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  warnings.warn(
+[2023-10-29 14:11:12,967] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: llama/checkpoint-40/global_step40/mp_rank_00_model_states.pt
+[2023-10-29 14:11:12,967] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-40/global_step40/mp_rank_00_model_states.pt...
+[2023-10-29 14:11:35,240] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-40/global_step40/mp_rank_00_model_states.pt.
+[2023-10-29 14:11:35,242] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving llama/checkpoint-40/global_step40/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt...
+[2023-10-29 14:12:31,483] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved llama/checkpoint-40/global_step40/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt.
+[2023-10-29 14:12:31,483] [INFO] [engine.py:3375:_save_zero_checkpoint] zero checkpoint saved llama/checkpoint-40/global_step40/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt
+[2023-10-29 14:12:31,484] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step40 is ready now!
+[2023-10-29 14:12:39,291] [INFO] [launch.py:315:sigkill_handler] Killing subprocess 1707473
+[2023-10-29 14:12:39,292] [INFO] [launch.py:315:sigkill_handler] Killing subprocess 1707474
+[2023-10-29 14:12:47,773] [ERROR] [launch.py:321:sigkill_handler] ['/data/zhangxiaoming/miniconda3/envs/env/bin/python3.9', '-u', 'finetune_clm.py', '--local_rank=1', '--model_name_or_path', '/datas/huggingface/Llama-2-7b-hf', '--train_files', '/data/zhangxiaoming/personal/sentiment_analysis/train1.csv', '--validation_files', '/data/zhangxiaoming/personal/sentiment_analysis/dev1.csv', '--per_device_train_batch_size', '1', '--per_device_eval_batch_size', '1', '--do_train', '--do_eval', '--use_fast_tokenizer', 'false', '--output_dir', 'llama', '--evaluation_strategy', 'steps', '--max_eval_samples', '800', '--learning_rate', '1e-4', '--gradient_accumulation_steps', '8', '--num_train_epochs', '10', '--warmup_steps', '400', '--logging_dir', 'llama/logs', '--logging_strategy', 'steps', '--logging_steps', '10', '--save_strategy', 'steps', '--preprocessing_num_workers', '10', '--save_steps', '20', '--eval_steps', '20', '--save_total_limit', '2000', '--seed', '42', '--disable_tqdm', 'false', '--ddp_find_unused_parameters', 'false', '--block_size', '2048', '--report_to', 'tensorboard', '--overwrite_output_dir', '--deepspeed', 'ds_config_zero2.json', '--ignore_data_skip', 'true', '--bf16', '--gradient_checkpointing', '--bf16_full_eval', '--ddp_timeout', '18000000'] exits with return code = -9
