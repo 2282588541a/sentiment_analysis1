@@ -18,11 +18,11 @@ bert文件夹里，test1.ipynb是训练代码，pre_bert_chinese.csv是训练后
 
 结果如下：
 
-第一个acc为![](image\bert1.png)
+第一个acc为![](/image/bert1.png)
 
 后面的结果为：
 
-![](image\bert2.png)
+![](/image/bert2.png)
 
 
 
@@ -66,6 +66,12 @@ his.append(("自然 不会错 过 这么 好 机会 顺手 拉开 车门 车 内
 
 目前在尝试第二个想法，做完会继续上传
 
+<<<<<<< HEAD
 ## llama2-7b：
 
 尝试对于llama27b模型进行微调，使用lora方法进行处理，但脱靶现象很严重，目前来看该项工作还是chatglm2最合适。
+=======
+参考：
+1.https://github.com/lyhue1991/torchkeras
+2.https://www.kaggle.com/code/debarshichanda/bert-multi-label-text-classification
+>>>>>>> 33ca6ac95a6b3724c45ab7689297c8e3c41f32f8
