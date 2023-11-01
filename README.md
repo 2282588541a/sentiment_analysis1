@@ -131,7 +131,20 @@ F1 Score (Micro) = 0.769
 F1 Score (Macro) = 0.7687481667535947
 ```
 
+尝试将二分类与多分类模型进行融合，发现手动配置效果较差，几乎不会提升，效果如下：
 
+```
+Love1
+Accuracy Score = 0.768
+F1 Score (Micro) = 0.768
+F1 Score (Macro) = 0.7671617824167001
+all
+Accuracy Score = 0.768
+F1 Score (Micro) = 0.768
+F1 Score (Macro) = 0.7671617824167001
+```
+
+接下来尝试通过线性层进行转化连接
 
 ## 参考：
 
