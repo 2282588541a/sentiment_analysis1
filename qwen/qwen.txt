@@ -5,7 +5,7 @@ import copy
 import json
 from http import HTTPStatus
 import dashscope
-dashscope.api_key ="”
+dashscope.api_key ="你的key”
 sent=['Love','Joy','Anxiety','Sorrow','Expect','Hate','Surprise','Anger']
 message1=[]
 def have(input):

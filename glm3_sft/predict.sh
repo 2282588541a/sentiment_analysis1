@@ -1,0 +1,13 @@
+CUDA_VISIBLE_DEVICES=7 python src/train_bash.py \
+    --stage sft \
+    --do_predict \
+    --model_name_or_path /datas/huggingface/chatglm3-6b \
+    --checkpoint_dir /datas/zhangxiaoming/personal/LLaMA-Factory/output \
+    --dataset sen1 \
+    --template default \
+    --finetuning_type lora \
+    --output_dir output1 \
+    --per_device_eval_batch_size 16 \
+    --max_samples 2000 \
+    --predict_with_generate \
+    --fp16
