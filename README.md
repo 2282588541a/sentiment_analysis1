@@ -246,7 +246,9 @@ temp："可以断言成批中国中国人科学家专家教授艺术家CEO出现
 ## 其它
 对于NLP大作业，主要完成了对于chatglm3的指令微调和对bert的分类微调。利用大模型生成外部知识库来辅助小模型做分类。利用qwen大模型完成了2万多条数据的注释，见qwen文件夹githubtrain.csv.
 
-对于研究来说，目前实验效果来看，该方法还是存在问题的，最近读了几篇检索增强生成(Retrieval Augmented Generation，RAG)的论文，感觉不应该让模型生成不可信知识，应该考虑让他生成知识，再通过RAG找到相关的例子，这个方案目前还在构想，参考以下结构图。
+对于研究来说，目前实验效果来看，该方法还是存在问题的，最近读了几篇检索增强生成(Retrieval Augmented Generation，RAG)的论文，感觉不应该让模型生成不可信知识，应该考虑让他生成知识，再通过RAG找到相关的例子，这个方案目前还在构想。而且在一篇论文中获得几个可以做的点，第一，参考Efficient Cross-Task Prompt Tuning for Few-Shot Conversational Emotion Recognition，可以在多个情感数据集再整理后作为训练集，并且可以考虑prompt-tunning，直觉是在结合外部知识的情况下，prompt tunning应该比上下文更有效果。第二，参考Association for Computational Linguistics Learning Retrieval Augmentation for Personalized Dialogue Generation，考虑联合训练检索器和生成器。
+
+
 
 
 ## 参考：
